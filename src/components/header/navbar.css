@@ -122,8 +122,9 @@
   }
   
   .nav-link {
-    color: white;
-    font-size: 16px;
+    color: white!important;
+    font-size: 18px!important;
+    font-weight:700!important;
     margin: 0 10px;
   }
   

@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import HeaderComponent from "components/header/navbar";
 import './register.css';
 
 
@@ -30,17 +29,8 @@ const RegisterComponent = () => {
 
     return (
         <>
-    
-    <HeaderComponent />
 
-    <section  className="vh-100 gradient-background">
-        <div className="container ">
-          <div className="row d-flex justify-content-center align-items-center ">
-
-
-
-            <div className="col-lg-6 col-md-8 col-12  mt-2 pt-1">
-              <div className="card text-black shadow-lg form-card">
+              <div className="card text-black shadow-lg form-card-register">
                 <div className="card-body p-md-5">
                 <p className="text-center h2 fw-bold mb-2 pb-4 form-name">Registration</p>
            
@@ -129,20 +119,22 @@ const RegisterComponent = () => {
                       </Form>
                     )}
                   </Formik>
+
+
+                  <div className="alert-container">
+                <div className="alert-content">
+                  <strong>Notice:</strong> After registration, please check your email. The username and password will be sent to you.
+                </div>
+               </div>
+
                 </div>
               </div>
-            </div>
+    
 
-        
-            <div className="alert-container">
-             <div className="alert-content">
-              <strong>Notice:</strong> After registration, please check your email. The username and password will be sent to you.
-          </div>
-            </div>
+           
 
-          </div>
-        </div>
-      </section>
+       
+
 
 
        </>
