@@ -1,0 +1,209 @@
+
+  .blog-section {
+      text-align: center;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+      height: 170px;
+    }
+    
+    /* Default background image if needed */
+    .blog-section::before {
+      content: "";
+      display: block;
+      background-image: var(--background-image, none);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    
+  
+    .event-marquee-container {
+      height: 150px; /* Adjust to desired height */
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .event-marquee-content {
+      position: absolute;
+      top: 100%;
+      animation: scroll-up 10s linear infinite;
+    }
+    
+    .event-marquee-content:hover {
+      animation-play-state: paused; /* Pause scrolling on hover */
+    }
+    
+    @keyframes scroll-up {
+      0% {
+        top: 100%;
+      }
+      100% {
+        top: -100%; /* Moves content out of view */
+      }
+    }
+    
+    .membership-details{
+      text-align: left;
+    }
+  
+    .event-title{
+      font-size: 18px;
+      text-align: left;
+    }
+  
+    .event-description{
+      font-size: 16px;
+      background-color: #E0FFFF;
+      text-align: left;
+    }
+  
+    .about-details,.about-title{
+      text-align: justify;
+    }
+  
+    /* Apply background colors for odd and even sections */
+  section:nth-child(odd) {
+    background: linear-gradient(45deg, #eefce1, #b4ddf0);  /* Light blue to slightly darker blue gradient */
+  
+  }
+  
+  section:nth-child(even) {
+    background: linear-gradient(45deg, #b4ddf0, #eefce1); /* Light blue to slightly darker blue gradient */
+  }
+  
+  /* Optional: add smooth transition between sections */
+  section {
+      transition: background-color 0.3s ease;
+  }
+  
+  /* Fade-in animation for sections */
+  
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+
+  
+  p{
+    text-align: left;
+  }
+  
+
+  
+  
+  @media (min-width: 992px) {
+    .container.contact-page {
+      max-width: 100% !important;
+    }
+  
+    .contact-page .contact-form {
+      padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+  
+    .about-text {
+      padding-right: calc(((100% - 960px) / 2) + 16px);
+    }
+    /* ------------- */
+    .col-lg-4, .col-md-4 {
+      /* Reset to original size for larger screens */
+      width: 33.33%;
+    }
+  
+    .text-about {
+      font-size: 1.2rem;
+    }
+  
+    .about-text {
+      font-size: 1rem;
+    }
+  
+    .d-flex {
+      justify-content: start; /* Align social buttons to left */
+    }
+  
+    .btn-social {
+      margin-right: 10px;
+    }
+    /* ------------------------ */
+  }
+  
+
+  
+  
+  @media (min-width: 1200px) {
+    .contact-page .contact-form  {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .contact-page .contact-form  {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+  }
+  
+  
+  /*** Footer ***/
+  .footer {
+    background: linear-gradient(45deg,#1a3974, #145f81fd), url('') center center no-repeat;
+    color: #ecf0f1; 
+    padding-top: 50px; 
+    padding-bottom: 30px;
+    background-size: cover;
+    margin-top: 6rem;
+  }
+  
+  .footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+  }
+  
+  .footer .btn.btn-social:hover {
+    color: var(--primary);
+  }
+  
+  .footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+    text-decoration: none;
+  }
+  
+  .footer .btn.btn-link::before {
+    position: relative;
+    font-weight: 900;
+    margin-right: 10px;
+    
+  }
+  
+  .footer .btn.btn-link:hover { 
+    letter-spacing: 1px;
+    box-shadow: none;
+  }
+  

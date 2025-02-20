@@ -1,0 +1,104 @@
+/* Background Gradient */
+.gradient-background {
+    background: linear-gradient(45deg, #eefce1, #b4ddf0);
+  }
+  
+  /* Form Card Styling */
+  .form-card {
+    border-radius: 15px!important;
+  }
+  
+  /* Floating Labels Adjustments */
+  .form-floating label {
+    color: #6c757d;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-floating input:focus + label {
+    color: #007bff;
+  }
+  
+  /* Form Input Styling */
+  .form-control {
+    border-radius: 10px;
+  }
+  
+  /* Button Styling */
+  .login-button {
+    background-color: #007bff !important;
+    color: white !important;
+    border: none !important;
+    transition: background-color 0.3s ease, transform 0.3s ease !important;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3 !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+  }
+  
+  .login-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Link Styling */
+  .forgot-password-link,
+  .register-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .forgot-password-link:hover,
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  
+  .form-name {
+    color: #344b75 !important;
+  }
+  
+  .required-input{
+    color:red!important;
+    padding-right:6px!important;
+}
+
+.icon-input{
+    padding-right:10px!important;
+}
+
+  /* Mobile Responsive Tweaks */
+  @media (max-width: 768px) {
+    .form-card {
+      padding: 20px;
+    }
+  
+    .form-floating label {
+      font-size: 14px;
+    }
+  }
+  
+
+  /* Positioning the password toggle icon inside the input field */
+.position-relative {
+    position: relative;
+  }
+  
+  .password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d; /* Adjust color as needed */
+  }
+  
+  .password-toggle-icon:hover {
+    color: #495057; /* Adjust hover color as needed */
+  }
+  
+  /* Optional: Adjust padding of the input field to accommodate the icon */
+  .form-control {
+    padding-right: 2.5rem; /* Ensure there's space for the icon */
+  }
+  
