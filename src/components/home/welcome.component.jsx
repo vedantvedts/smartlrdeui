@@ -1,17 +1,30 @@
 import logo from "../../assets/images/smart2.jpg";
 import home from "../../assets/images/home.jpg";
-import about from "../../assets/images/smart5.png";
-import { FaFacebookF, FaHome, FaInstagramSquare, FaLinkedinIn, FaPhoneAlt, FaSignInAlt, FaUsers } from "react-icons/fa";
-import { FaXTwitter } from 'react-icons/fa6';
 import "./welcome.css";
 import { useEffect, useState } from "react";
 import HeaderComponent from "components/header/navbar";
-import LoginComponent from "components/admin/login.component";
 import RegisterComponent from "components/admin/register.component";
+import LoginComponent from "components/admin/login.component";
+import AboutUsComponent from "components/admin/about.component";
+import ContactComponent from "components/admin/contact.component";
 
+const imagesForJoinSmart = [
+  require("../../assets/images/joinSmart1.png"),
+  require("../../assets/images/joinSmart4.png"),
+  require("../../assets/images/joinSmart3.png"),
+  require("../../assets/images/joinSmart5.png"),
+];
 const WelcomeComponent = () => {
 
-  
+  const [currentJoinUsImage, setCurrentJoinUsImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentJoinUsImage((prev) => (prev + 1) % imagesForJoinSmart.length);
+    }, 2000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [imagesForJoinSmart.length]);
 
 
   return (
@@ -88,131 +101,68 @@ const WelcomeComponent = () => {
       </section>
 
       <section id="about" className="py-5 fade-in">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6"> <img src={about} alt="SMART Committee" className="img-fluid rounded" /></div>
-            <div className="col-md-6" style={{marginBottom: 'auto'}}>
-              <h2 className="about-title">About the SMART</h2>
-              <p className="about-details">
-                IRSI Committee proposed SMART team to promote the general advancement of educational, training and engineering aspects of Microwaves, Antennas, Radar Technologies, their allied subjects and
-                their applications. SMART may facilitate the exchange of information and ideas on these subjects amongst the members of the Society. Further to this, it has been advised to undertake other
-                activities that will further the objectives and aims of the Society and promote advancement in Microwaves, Antennas and Radar Technologies and their allied subjects. The committee also advised
-                for reviving activities of IRSI to make Microwave, Antennas and Radar Technologies more popular in the country through SMART.
-              </p>
-            </div>
-          </div>
-        </div>
+        <AboutUsComponent/>
       </section>
 
 
-
-
-{/* 
       <section id="register" className="py-5">
-      <RegisterComponent/>
-      </section> */}
+         <div className="container">
+             <div className="row align-items-center">
+             <div className="col-md-6" style={{marginBottom: 'auto'}}>
+              <h2 className="about-title">Join SMART</h2>
+              {/*Start Banner component*/}
+              <div className="banner-text-image">
+                      <div className="banner-overlay"></div>
+                         <div className="column-height image-block banner-image-content banner-bg-image mt-4">
+                          <img
+                         src={imagesForJoinSmart[currentJoinUsImage]}
+                           alt="banner"
+                               className="banner-img-responsive"
+                            />
+                           </div>
+
+                            <div className="clearfix"></div>
+                          </div>
+
+
+              {/*End Banner component*/}
+              <p className="about-details mt-5 mb-1">
+              SMART promotes organizing annual seminars, workshops, and specialized national-level courses, hosting symposiums and workshops, publishing newsletters and e-newsletters, developing a database of experts, facilities, and bibliographic publications, publishing monographs, and instituting fellowships and awards.
+              </p>
+
+
+            </div>
+                <div className="col-md-6"> 
+                   <RegisterComponent/>
+                </div>
+             </div>
+          </div>
+      </section> 
+
+      
 
       <section id="login" className="py-5">
+         <div className="container">
+             <div className="row align-items-center">
+                <div className="col-md-6"> 
+                   <LoginComponent/>
+                </div>
+                <div className="col-md-6 mt-3" style={{marginBottom: 'auto'}}>
+                <h2 className="about-title">Already have a SMART account? Log in</h2>
 
-
-      {/* <div className="col-xs-12 col-sm-6">
-       <div className="cta-button"><br/>
-          <a style={{color:'rgb(227,114,34);background', borderStyle: 'solid', bordeWidth : '2.0px', borderColor : 'rgb(227,114,34)'}}  class="btn-style" href="/register" target="_self">Join now</a>
-       </div>
-     </div> */}
-
-
-
-
-
-      <div className="container">
-        <div className="row justify-content-center">
-        <div className="col-md-12">
-       
-        {/* <LoginComponent/> */}
-          </div>
-
-          {/* <div className="col-md-6 "> */}
-      
-            {/* <div className="login-container p-4 rounded shadow">
-              <h2 className="login-title text-center mb-4">Login to SMART</h2>
-
-              <form> 
-                <div className="mb-3" style={{ textAlign: "left" }}>
-                    <label htmlFor="username" className="form-label">Username</label>
-                    <input type="text" className="form-control username" id="username" placeholder="Enter your username" required />
-                    </div>
-                    
-                    <div className="mb-3" style={{ textAlign: "left" }}>
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" placeholder="Enter your password" required />
-                    </div>
-                    
-                    <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="rememberMe" />
-                    <label className="form-check-label" htmlFor="rememberMe">Remember Me</label>
-                    </div>
+               <p className="about-details mt-4">
+               As a professional in the fields of microwaves, antennas, and radar technologies, logging into the Society for Microwaves, Antennas and Radar Technologies (SMART) platform provides you with exclusive access to a wealth of resources and opportunities. By becoming a member, you can participate in specialized workshops, receive newsletters, and connect with a network of experts in areas such as RF and microwave engineering, millimeter-wave and terahertz technologies, and radar systems. Engaging with SMART will enhance your professional development and keep you informed about the latest advancements in your field.
+                       </p> 
+            </div>
                 
-                    <button type="submit" className="btn btn-primary w-100">Login</button>
-                    
-                    <div className="text-center mt-3">
-                    <a href="#" className="text-muted">Forgot Password?</a>
-                    </div>
-                
-                    <div className="text-center mt-3">
-                    <p className="text-muted">Don't have an account? <a href="/register" className="text-primary">Sign up</a></p>
-                    </div>
-              </form>
-
-            </div> */}
-          {/* </div> */}
-          
-        </div>
-      </div>
-    </section>
+                </div>
+             </div>
+      </section> 
 
     <section id="contact" className="py-5 fade-in">
-      <div className="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style={{ marginTop: "6rem" }} >
-        <div className="container py-5">
-          <div className="row g-5">
-            {/* Address Section */}
-            <div className="col-lg-3 col-md-6" style={{textAlign:'justify'}}>
-              <h4 className="text-light mb-4 text-about" >Contact Us</h4>
-              <p className="mb-2 about-text"> <i className="fa fa-user me-3"></i>Dr. SOMSING RATHOD, SC F</p>
-              <p className="mb-2 about-text"> <i className="fa fa-phone me-3"></i> 9880107412</p>
-              <p className="mb-2 about-text"> <i className="fa fa-envelope me-3"></i>somsing.rathod.lrde@gov.in</p>
-              <div className="d-flex pt-2" style={{textAlign:'justify'}}>
-                <a className="btn btn-outline-light btn-social" href="/"><FaFacebookF size={20} color="#1877F2" /></a>
-                <a className="btn btn-outline-light btn-social" href="/"><FaXTwitter size={20} /></a>
-                <a className="btn btn-outline-light btn-social" href="/"><FaInstagramSquare size={20} /></a>
-                <a className="btn btn-outline-light btn-social" href="/"><FaLinkedinIn size={20} color="#0077B5" /></a>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6" style={{textAlign:'justify'}}>
-              <h4 className="mb-4 text-about">Quick Links</h4>
-              <a className="btn btn-link" href="/"> <FaHome />  About Us</a>
-              <a className="btn btn-link" href="/register"> <FaUsers />  Membership</a>
-              <a className="btn btn-link" href="/login"> <FaSignInAlt /> Login</a>
-              <a className="btn btn-link" href="/"> <FaPhoneAlt/>  Contact Us</a>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Bottom Section */}
-        <div className="container">
-          <div className="copyright">
-            <div className="row">
-              <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy;{" "}
-                <a className="" href="/" style={{ textDecoration: 'none' }}> SMART @ </a> All Right Reserved.
-              </div>
-              <div className="col-md-6 text-center text-md-end"> Designed By Vedant Tech Solutions </div>
-            </div>
-          </div>
-        </div>
-      </div>
-</section>
+     <ContactComponent/>
+   </section>
+   
 
     </>
   )
