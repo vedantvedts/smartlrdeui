@@ -1,0 +1,262 @@
+/* .fade-in-sidebar-content {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fade-in-sidebar-content {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */.tabs-left .nav-link {
+  color: #344b75 !important;
+  text-align: left;
+  border-radius: 0;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  padding: 10px 15px;
+}
+
+/* Active state */
+.tabs-left .nav-link.active {
+  background: #45b8ee !important;
+  color: white !important;
+}
+
+/* Hover effect (only if not active) */
+.tabs-left .nav-link:hover:not(.active) {
+  background: transparent !important;
+  color: #45b8ee !important;
+}
+
+/* Underline effect */
+.tabs-left .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;  /* Moves the line closer to text */
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #45b8ee;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Expand underline on hover */
+.tabs-left .nav-link:hover:not(.active)::after {
+  width: 100%;
+}
+
+/* Active indicator triangle */
+.tabs-left .nav-link.active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;  /* Adjust position to fit well */
+  transform: translateY(-50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #45b8ee;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *{
+  padding:0!important;
+  margin:0!important;
+  }
+
+
+.sidebar {
+  position: fixed;
+  top: 110px; 
+  left: 0;
+  height: calc(100vh - 60px); 
+  width: 80px;
+  background: linear-gradient(45deg, #344b75, #3770d1);
+  padding: 0.4rem 0.8rem;
+  transition: all 0.5s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 1000; 
+}
+
+
+.sidebar.active {
+  width: 150px;
+}
+
+
+.main-container {
+  display: flex;
+  padding-top: 100px!important;; }
+
+
+.main-content {
+  flex-grow: 1;
+  background-color: transparent;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: margin-left 0.5s ease;
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+.sidebar.active + .main-content {
+  margin-left: 150px;
+  width: calc(100% - 150px);
+}
+
+
+
+
+.user-img{
+  width:50px!important;
+  border-radius:100%!important;
+  border: 1px solid #eee!important;
+}
+
+
+
+
+.sidebar #btn{
+  position:absolute!important;
+  color:#fff!important;
+  top:.4rem!important;
+  left:50%!important;
+  font-size:1.2rem!important;
+  line-height:50px!important;
+  transform:translateX(-50%);
+  cursor:pointer!important;
+}
+
+.sidebar.active #btn{
+  left:90%!important;
+}
+
+.sidebar .top .logo{
+  color:#fff!important;
+  display:flex!important;
+  height:50px!important;
+  width:100%!important;
+  align-items:center!important;
+  pointer-events:none!important;
+  opacity:0!important;
+}
+
+
+
+.sidebar.active .top .logo{
+  opacity:1!important;
+}
+
+
+
+
+
+.top .logo i{
+  font-size: 2rem!important;
+  margin-right:5px!important;
+
+}
+
+.user p {
+  color:#fff!important;
+  opacity:1!important;
+  margin-left:1rem!important;
+}
+
+.sidebar p{
+  opacity:0!important;
+}
+
+.sidebar.active p {
+  opacity:1!important;
+}
+
+.sidebar ul li{
+  position:relative!important;
+  list-style-type: none!important;
+  height:50px!important;
+  width:90%!important;
+  margin:0.8rem auto!important;
+  line-height:50px!important;
+}
+
+.sidebar ul li a{
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+text-decoration:none!important;
+border-radius:0.8rem!important;
+
+}
+
+.sidebar ul li a:hover{
+  background-color:#fff!important;
+  color:#12171e!important;
+
+}
+
+.sidebar ul li a i{
+  min-width:50px!important;
+  text-align:center!important;
+  height: 50px!important;
+}
+
+.sidebar .nav-item{
+  opacity:0!important;
+}
+
+.sidebar.active .nav-item{
+  opacity:1!important;
+}
+
+
+.sidebar ul li .tooltip{
+  position:absolute!important;
+  left:125px!important;
+  top:50%!important;
+  transform:translate(-50%, -50%)!important;
+  box-shadow: 0 0.5rem 0.8rem rgba(0,0,0,0.2)!important;
+  border-radius:0.6rem!important;
+  padding: 0.4 1.2rem!important;
+  line-height:1.8rem!important;
+  z-index:20!important;
+  opacity:0!important;
+}
+
+.sidebar ul li:hover .tooltip{
+  opacity:1!important;
+}
+.sidebar.active ul li .tooltip{
+  display:none!important;
+}
+
+ */

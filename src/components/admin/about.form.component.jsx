@@ -1,9 +1,11 @@
 import React from "react";
-import HeaderComponent from "components/header/navbar";
+import HeaderComponent from "components/header/header";
+import NavbarComponent from "components/header/navbar";
 import AboutUsComponent from "components/admin/about.component";
 import RegisterComponent from "components/admin/register.component";
 import LoginComponent from "components/admin/login.component";
 import ContactComponent from "components/admin/contact.component";
+import FooterComponent from "components/footer/footer";
 
 import { useEffect, useState } from "react";
 
@@ -30,6 +32,7 @@ const AboutComponent = () => {
     return (
         <>
     <HeaderComponent/> 
+    <NavbarComponent/>
     <section  id="fixed-sub-nav" className="vh-100 gradient-background">
      
     <section id="aboutUs" className="py-5">
@@ -89,9 +92,8 @@ const AboutComponent = () => {
              </div>
       </section> 
 
-      <section id="contact" className="py-5 fade-in">
      <ContactComponent/>
-   </section>
+     <FooterComponent/>
 
 
     </section>

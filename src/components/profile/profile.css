@@ -1,0 +1,82 @@
+:root {
+    --primary-font-size: clamp(24px, 4vw, 2rem);
+    --secondary-font-size: clamp(16px, 2vw, 1rem);
+    --third-font-size: clamp(12px, 1vw, .7rem);
+  }
+
+
+.profile-wrap{
+    margin: 0 auto;
+}
+
+.profile-title {
+    margin-top: 20px;
+  }
+  
+  .profile-title h1 {
+    text-align: center;
+    font-size: var(--primary-font-size);
+    color:#344b75!important;
+  }
+  .profile-title p {
+    text-align: center;
+    font-size: var(--secondary-font-size);
+  }
+
+  .profile-container {
+    background-color: white;
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    row-gap: 20px;
+    border-radius: 25px;
+  }
+
+
+  
+  @media only screen and (max-width: 1439px) {
+    .profile-wrap {
+      margin: 0 5%;
+    }
+    .profile-container {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media only screen and (max-width: 740px) {
+    .profile-container {
+      margin-top: 55px; /* Adjust margin-top for smaller screens */
+    }
+  }
+
+  .icon-button {
+    background-color: #344b75;
+    color: white;
+    border: none;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 42px; /* Adjusted to match SelectPicker */
+    width: 42px; /* Square and balanced */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icon-button:hover {
+    background-color: #2b3e60;
+    transform: scale(1.1); /* Slight enlargement for a modern effect */
+  }
+  
+  .icon-button:active {
+    transform: scale(1); /* Reset to normal size when clicked */
+  }
+  
+  .icon-button svg {
+    font-size: 20px; /* Adjust icon size */
+  }
+  
