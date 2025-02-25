@@ -5,7 +5,9 @@ import './login.css';
 import { FaFacebookF, FaHome, FaInstagramSquare, FaLinkedinIn, FaPhoneAlt, FaSignInAlt, FaUsers } from "react-icons/fa";
 
 import ContactComponent from "components/admin/contact.component";
-import HeaderComponent from "components/header/navbar";
+import FooterComponent from "components/footer/footer";
+import HeaderComponent from "components/header/header";
+import NavbarComponent from "components/header/navbar";
 import { FaXTwitter } from 'react-icons/fa6';
 
 
@@ -13,12 +15,13 @@ const ContactFormComponent = () => {
   return (
     <>
        <HeaderComponent/> 
-      <section  id="fixed-sub-nav" className="vh-100 gradient-background">
-       <div className="container">
+       <NavbarComponent/>
+      <section  id="fixed-sub-nav" className="gradient-background vh-100 " style={{paddingBottom:'30px'}}>
+       <div className="container ">
           <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-lg-6   mt-2 pt-1">
-          <div className="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style={{ marginTop: "6rem" }} >
-          <div className="container py-5">
+          <div className="col-lg-6   ">
+          <div className="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s" style={{ marginTop: "2rem" }} >
+          <div className="container ">
                        <div className="row g-5">
                          {/* Address Section */}
                          <div className="" style={{textAlign:'justify'}}>
@@ -40,7 +43,7 @@ const ContactFormComponent = () => {
           </div>
         </div>
       </section>
-
+      <FooterComponent/>
       
 
 

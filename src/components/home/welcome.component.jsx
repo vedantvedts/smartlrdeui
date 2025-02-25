@@ -2,11 +2,13 @@ import logo from "../../assets/images/smart2.jpg";
 import home from "../../assets/images/home.jpg";
 import "./welcome.css";
 import { useEffect, useState } from "react";
-import HeaderComponent from "components/header/navbar";
+import HeaderComponent from "components/header/header";
+import NavbarComponent from "components/header/navbar";
 import RegisterComponent from "components/admin/register.component";
 import LoginComponent from "components/admin/login.component";
 import AboutUsComponent from "components/admin/about.component";
 import ContactComponent from "components/admin/contact.component";
+import FooterComponent from "components/footer/footer";
 
 const imagesForJoinSmart = [
   require("../../assets/images/joinSmart1.png"),
@@ -28,8 +30,10 @@ const WelcomeComponent = () => {
 
 
   return (
-    <>
-     <HeaderComponent />
+      <>
+       <HeaderComponent />
+       <NavbarComponent />
+
 
       <section id="fixed-sub-nav" className="fade-in">
         {/* Blog Section */}
@@ -148,7 +152,7 @@ const WelcomeComponent = () => {
                    <LoginComponent/>
                 </div>
                 <div className="col-md-6 mt-3" style={{marginBottom: 'auto'}}>
-                <h2 className="about-title">Already have a SMART account? Log in</h2>
+                <h2 className="about-title">Log In to Your SMART Account</h2>
 
                <p className="about-details mt-4">
                As a professional in the fields of microwaves, antennas, and radar technologies, logging into the Society for Microwaves, Antennas and Radar Technologies (SMART) platform provides you with exclusive access to a wealth of resources and opportunities. By becoming a member, you can participate in specialized workshops, receive newsletters, and connect with a network of experts in areas such as RF and microwave engineering, millimeter-wave and terahertz technologies, and radar systems. Engaging with SMART will enhance your professional development and keep you informed about the latest advancements in your field.
@@ -157,11 +161,17 @@ const WelcomeComponent = () => {
                 
                 </div>
              </div>
-      </section> 
 
-    <section id="contact" className="py-5 fade-in">
-     <ContactComponent/>
-   </section>
+      </section> 
+      
+      <ContactComponent/>
+      <FooterComponent/>
+    
+      
+    
+
+    
+
    
 
     </>

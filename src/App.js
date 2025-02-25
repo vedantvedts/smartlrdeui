@@ -12,7 +12,7 @@ import RegisterFormComponent from 'components/admin/register.form.component';
 import LoginFormComponent from 'components/admin/login.form.component';
 import ForgotPasswordComponent from 'components/admin/forgot.password.component';
 import ContactFormComponent from 'components/admin/contact.form.component';
-
+import SmartDashboardComponent from 'components/dashboard/smart.dashboard.component';
 
 function App() {
   return (
@@ -24,6 +24,9 @@ function App() {
         <Route path="/login" element={<LoginFormComponent />} />
         <Route path="/forgot-password" element={<ForgotPasswordComponent />} />
         <Route path="/contact" element={<ContactFormComponent />} />
+
+        <Route path="/dashboard" element={<SmartDashboardComponent />} />
+
        
         {/* <Route path="/about" element={<AboutPageComponent />} /> */}
         </Routes>

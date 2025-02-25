@@ -12,10 +12,10 @@ const LoginComponent = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(5, 'Username must be at least 5 characters')
-      .max(100, 'Username must not exceed 100 characters')
-      .required('Please enter your username'),
+    email: Yup.string()
+      .min(5, 'Email address must be at least 5 characters')
+      .max(100, 'Email addres must not exceed 100 characters')
+      .required('Please enter your Email address'),
     password: Yup.string()
       .min(1, 'Password must be at least 1 characters')
       .max(40, 'Password must not exceed 40 characters')
@@ -29,7 +29,7 @@ const LoginComponent = () => {
                 <div className="card-body p-md-5">
                   <p className="text-center h2 fw-bold mb-2 pb-4 form-name">Login</p>
                   <Formik
-                    initialValues={{ username: "", password: "" }}
+                    initialValues={{ email: "", password: "" }}
                     validationSchema={validationSchema}
                     onSubmit={(values) => {
                       console.log("Form submitted with values:", values);
@@ -42,15 +42,15 @@ const LoginComponent = () => {
                           <div className="form-floating">
                             <Field
                               type="text"
-                              id="username"
-                              name="username"
-                              className={`form-control ${touched.username && errors.username ? "is-invalid" : ""}`}
-                              placeholder="Username"
+                              id="email-id"
+                              name="email"
+                              className={`form-control ${touched.email && errors.email ? "is-invalid" : ""}`}
+                              placeholder="Email address"
                             />
-                            <label htmlFor="username">
-                              <i className="fa fa-user icon-input"></i>Username<span className="required-input">*</span>
+                            <label htmlFor="email">
+                              <i className="fa fa-user icon-input"></i>Email address<span className="required-input">*</span>
                             </label>
-                            <ErrorMessage name="username" component="div" className="invalid-feedback" />
+                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
                           </div>
                         </div>
 

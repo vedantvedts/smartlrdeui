@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './register.css';
+import SelectPicker from "components/selectpicker/selectPicker";
+
 
 
 
 
 const RegisterComponent = () => {
+
+const designations = ["Director", "Sc G", "Sc F", "Sc E", "Sc D", "Sc C", "Sc B", "TO D","TO C","TO B","TO A"];
+const organizations = ["LRDE", "ADE", "CAIR", "DEBEL"];
   
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -24,6 +29,12 @@ const RegisterComponent = () => {
       .email("Enter a valid email address")
       .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, "Invalid email format")
       .required("Please enter your email"),
+  
+      designation: Yup.string()
+      .nullable()
+      .required("Please select designation"),
+    
+      organization: Yup.string().required("Please select organization"),
   });
   
 
@@ -36,13 +47,14 @@ const RegisterComponent = () => {
            
 
                   <Formik
-                    initialValues={{ name: "", mobileno: "", emailId: "" }}
+                    initialValues={{ name: "", mobileno: "", emailId: "", designation: "", organization: { label: "LRDE", value: "LRDE" } }}
+
                     validationSchema={validationSchema}
                     onSubmit={(values) => {
                       console.log("Form submitted with values:", values);
                     }}
                   >
-                    {({ touched, errors }) => (
+                  {({ values, touched, errors, setFieldValue }) => (
                       <Form>
                         {/* Name Field */}
                         <div className="mb-3">
@@ -103,8 +115,48 @@ const RegisterComponent = () => {
                           </div>
                         </div>
 
+
+
+                            <div className="mb-3" >
+                              <div className="form-floating">
+                              <SelectPicker
+  // label="Designation"
+  options={designations.map(designation => ({ label: designation, value: designation }))}
+  value={values.designation ? { label: values.designation, value: values.designation } : null}
+  handleChange={(selectedOption) => setFieldValue("designation", selectedOption?.value || "")}
+
+  readOnly={false}
+  placeholder="Select Designation"
+  required={true}  
+/>
+<ErrorMessage name="designation" component="div" className="invalid-feedback" />
+     
+                              </div>
+                            </div>
+
+                          
+                                <div className="mb-3" >
+                                  <div className="form-floating">
+                                     {/* Organization Select Picker */}
+      <SelectPicker
+        // label="Organization"
+        options={organizations.map((organization) => ({ label: organization, value: organization }))}
+        value={values.organization}
+        handleChange={(selectedOption) => setFieldValue("organization", selectedOption)}
+        readOnly={false}
+          placeholder="Select Organization"
+          required={true}  
+      />
+      <ErrorMessage name="organization" component="div" className="invalid-feedback" />
+                                    {/* <label htmlFor="organization">Organization<span className="required-input">*</span></label> */}
+
+                                  </div>
+                                </div>
+                         
+                         
+
                           {/* Submit Button */}
-                          <div className="d-flex justify-content-center mt-5 pt-3">
+                          <div className="d-flex justify-content-center mt-4 pt-3">
                           <button type="submit" className="btn btn-lg w-100 register-button">
                             Register
                           </button>
@@ -121,11 +173,11 @@ const RegisterComponent = () => {
                   </Formik>
 
 
-                  <div className="alert-container">
+              <div className="alert-container">
                 <div className="alert-content">
-                  <strong>Notice:</strong> After registration, please check your email. The username and password will be sent to you.
+                  <strong>Notice:</strong> After registering, please check your email for your password.
                 </div>
-               </div>
+              </div>
 
                 </div>
               </div>
