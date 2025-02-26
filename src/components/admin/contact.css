@@ -1,0 +1,26 @@
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.g-pos-rel {
+    position: relative !important;
+}
+.g-brd-white-opacity-0_1 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.g-brd-bottom {
+    border-bottom: solid 1px transparent !important;
+}
+
+.g-color-white-opacity-0_8{
+    padding-left:6px!important;
+    font-size:18px!important;
+    /* font-weight:500!important; */
+    color:white!important;
+}
+
+.g-pos-rel {
+
+    padding-bottom:10px!important;
+}

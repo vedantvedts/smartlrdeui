@@ -1,0 +1,117 @@
+/* Container */
+.selectpicker-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Label */
+  .selectpicker-label {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+
+  
+  /* Dropdown container */
+  .selectpicker-dropdown-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem .75rem;
+    border-radius: 0.375rem;
+    border: 1px solid #ced4da;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    height: 50px;
+    position: relative;
+  }
+  
+  .selectpicker-dropdown {
+    border: none !important;
+    outline: none !important; /* Prevents black border on focus */
+    background: transparent; /* Ensures no background change */
+    width: 100%; /* Ensures full width inside container */
+    cursor: pointer;
+}
+
+.selectpicker-dropdown-container:focus-within {
+    border-color: #ced4da !important; /* Prevent focus effect */
+    box-shadow: none !important; /* Removes any shadow on focus */
+}
+
+.selectpicker-dropdown:hover,
+.selectpicker-dropdown:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+  /* Arrow icon */
+  .selectpicker-arrow {
+    position: absolute;
+    right: 15px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Dropdown options */
+  .selectpicker-options-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+  }
+  
+  /* Show dropdown when active */
+  .selectpicker-container.active .selectpicker-options-container {
+    display: block;
+  }
+  
+  /* Search input */
+  .selectpicker-search {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  /* Option styles */
+  .selectpicker-option {
+    padding: 10px;
+    cursor: pointer;
+    text-align: left; /* Left align text */
+    transition: background 0.2s;
+    border: none; /* Remove border */
+  }
+
+/* Selected option should always be blue */
+.selectpicker-option.selected {
+    background: #3770d1 !important; /* Keep it blue */
+    color: white;
+}
+
+  
+/* Hover effect: Grey, but not override selected blue */
+.selectpicker-option:hover {
+    background: #d3d3d3 !important; /* Grey hover effect */
+    color: black;
+}
+
+/* Ensure selected option remains blue even when hovered */
+.selectpicker-option.selected:hover {
+    background: #3770d1 !important;
+    color: white;
+}
+  
+  

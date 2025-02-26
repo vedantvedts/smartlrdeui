@@ -6,8 +6,6 @@ import about from "../../assets/images/smart5.png";
 
 const AboutUsComponent = () => {
   
-
-
     return (
         <>
 

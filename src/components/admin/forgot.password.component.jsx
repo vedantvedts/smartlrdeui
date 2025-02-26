@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './login.css';
-import HeaderComponent from "components/header/navbar";
+import HeaderComponent from "components/header/header";
+import NavbarComponent from "components/header/navbar";
 
 const ForgotPasswordComponent = () => {
 
@@ -21,6 +22,7 @@ const ForgotPasswordComponent = () => {
   return (
     <>
  <HeaderComponent/> 
+ <NavbarComponent/>
       <section  id="fixed-sub-nav" className="vh-100 gradient-background">
        <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
