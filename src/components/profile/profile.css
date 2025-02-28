@@ -1,82 +1,110 @@
-:root {
-    --primary-font-size: clamp(24px, 4vw, 2rem);
-    --secondary-font-size: clamp(16px, 2vw, 1rem);
-    --third-font-size: clamp(12px, 1vw, .7rem);
-  }
 
-
-.profile-wrap{
-    margin: 0 auto;
+.form-floating > .bi-calendar-date + .datepicker_input + label {
+  padding-left: 3.5rem;
+  z-index: 3;
 }
 
-.profile-title {
-    margin-top: 20px;
-  }
-  
-  .profile-title h1 {
-    text-align: center;
-    font-size: var(--primary-font-size);
-    color:#344b75!important;
-  }
-  .profile-title p {
-    text-align: center;
-    font-size: var(--secondary-font-size);
-  }
+.layout{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
-  .profile-container {
-    background-color: white;
-    margin-top: 70px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: nowrap;
-    row-gap: 20px;
-    border-radius: 25px;
-  }
+input[type="radio"].profile-tab
+{
+  display: none;
+}
+
+.addressTypeRadio{
+  cursor:"pointer"
+}
+
+.btn-div{
+  padding:20px!important;
+}
+
+label.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-bottom: 2px solid #49abff;
+  background: #ecf0f1;
+  user-select: none;
+  transition: background 0.4s, transform 0.2s; /* Smooth effect */
+  padding: 10px 20px; /* Fixed padding to prevent shifting */
+}
+
+/* Apply the zoom effect without shifting */
+input[type="radio"].profile-tab:checked + .page + label.nav {
+  background: #49abff;
+  color: #ffffff;
+  transform: scale(1.05); /* Zoom effect */
+}
+
+/* Ensure text remains aligned */
+label.nav span {
+  position: relative;
+  transition: padding-left 0.2s;
+}
+
+/* Keep SVG icons visible */
+label.nav svg {
+  opacity: 1;
+}
 
 
-  
-  @media only screen and (max-width: 1439px) {
-    .profile-wrap {
-      margin: 0 5%;
+.page {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  grid-column-end: span 3;
+  padding: 20px;
+  /* display: flex; */
+  flex-direction: column; /* Ensure content stacks properly */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Center text */
+}
+
+.page-contents > *{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.2s, transform 0.2s;
+  @for $c from 1 through 20{
+    &:nth-child(#{$c}){
+      transition-delay: 0.2s + ($c * 0.2s);
     }
-    .profile-container {
-      flex-wrap: wrap;
-    }
   }
+}
 
-  @media only screen and (max-width: 740px) {
-    .profile-container {
-      margin-top: 55px; /* Adjust margin-top for smaller screens */
-    }
+input[type="radio"].profile-tab + .page{
+  transition: transform 0.2s;
+  transform: translateX(100%);
+}
+
+input[type="radio"].profile-tab:checked + .page{
+  transform: translateX(0%);
+  .page-contents > *{
+    opacity: 1;
+    transform: translateY(0px);
   }
+}
 
-  .icon-button {
-    background-color: #344b75;
-    color: white;
-    border: none;
+.page-contents{
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Adjust width for mobile */
+@media (max-width: 768px) {
+  .page-contents {
+    width: 100%;
     padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    cursor: pointer;
-    height: 42px; /* Adjusted to match SelectPicker */
-    width: 42px; /* Square and balanced */
-    transition: all 0.3s ease-in-out;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   }
-  
-  .icon-button:hover {
-    background-color: #2b3e60;
-    transform: scale(1.1); /* Slight enlargement for a modern effect */
-  }
-  
-  .icon-button:active {
-    transform: scale(1); /* Reset to normal size when clicked */
-  }
-  
-  .icon-button svg {
-    font-size: 20px; /* Adjust icon size */
-  }
-  
+}
+
+
+

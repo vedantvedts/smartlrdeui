@@ -1,59 +1,144 @@
-import logo from "../../assets/images/smart2.jpg";
-import home from "../../assets/images/home.jpg";
-import "./dashboard.css";
 import { useEffect, useState } from "react";
+import "./smartDashboard.css";
 import HeaderComponent from "components/header/header";
-import SideNavbarComponent from "components/header/side.navbar";
+import ProfileFormComponent from "components/profile/profile.membership.component";
+import SubscriptionFormComponent from "components/subscription/subscription.membership.component"
 
 
-
-import RegisterComponent from "components/admin/register.component";
-import LoginComponent from "components/admin/login.component";
-import AboutUsComponent from "components/admin/about.component";
-import ContactComponent from "components/admin/contact.component";
-import FooterComponent from "components/footer/footer";
-
-const imagesForJoinSmart = [
-  require("../../assets/images/joinSmart1.png"),
-  require("../../assets/images/joinSmart4.png"),
-  require("../../assets/images/joinSmart3.png"),
-  require("../../assets/images/joinSmart5.png"),
-];
 const SmartDashboardComponent = () => {
-
-  const [currentJoinUsImage, setCurrentJoinUsImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentJoinUsImage((prev) => (prev + 1) % imagesForJoinSmart.length);
-    }, 2000); // Change image every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [imagesForJoinSmart.length]);
-
+  const [activeTab, setActiveTab] = useState("v-pills-profile");
 
   return (
-      <>
-       <HeaderComponent />
-       
-
+    <>
+      <HeaderComponent />
 
       <section id="fixed-sub-nav" className="fade-in vh-100">
-      <section id="dashboard" className="py-1">
+        <section id="dashboard" className="py-4 header">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-2 dashboard-smart-side-tab">
+                <div
+                  className="nav flex-column nav-pills nav-pills-custom"
+                  id="v-pills-tab"
+                  role="tablist"
+                  aria-orientation="vertical"
+                >
+                  <a className={`nav-link mb-3 px-2 py-2 shadow ${
+                      activeTab === "v-pills-profile" ? "active" : ""
+                    }`}
+                    id="v-pills-profile-tab"
+                    role="tab"
+                    onClick={() => setActiveTab("v-pills-profile")}
+                  >
+                    {/* <i className="fa fa-user-circle-o mr-2"></i>&nbsp; */}
+                    <span className="font-weight-bold small text-uppercase">
+                      Profile
+                    </span>
+                  </a>
 
-       <SideNavbarComponent/>
+                  <a
+                    className={`nav-link mb-3 px-2 py-2  shadow ${
+                      activeTab === "v-pills-subscription" ? "active" : ""
+                    }`}
+                    id="v-pills-subscription-tab"
+                    role="tab"
+                    onClick={() => setActiveTab("v-pills-subscription")}
+                  >
+                    {/* <i className="fa fa-calendar-minus-o mr-2"></i>&nbsp; */}
+                    <span className="font-weight-bold small text-uppercase">
+                      Subscription
+                    </span>
+                  </a>
 
-          {/* Add your main content here */}
+                  {/* <a
+                    className={`nav-link mb-3 px-2 py-2  shadow ${
+                      activeTab === "v-pills-cart" ? "active" : ""
+                    }`}
+                    id="v-pills-cart-tab"
+                    role="tab"
+                    onClick={() => setActiveTab("v-pills-cart")}
+                  >
+                    <span className="font-weight-bold small text-uppercase">
+                      Cart
+                    </span>
+                  </a> */}
+
+                  {/* <a
+                    className={`nav-link mb-3 px-2 py-2  shadow ${
+                      activeTab === "v-pills-payment" ? "active" : ""
+                    }`}
+                    id="v-pills-payment-tab"
+                    role="tab"
+                    onClick={() => setActiveTab("v-pills-payment")}
+                  >
+                    <span className="font-weight-bold small text-uppercase">
+                      Payment
+                    </span>
+                  </a> */}
+                </div>
+              </div>
+
+              <div className="col-md-10 dashboard-smart-tab-content">
+                <div className="tab-content " id="v-pills-tabContent">
    
-   
-              
+              {/* PROFILE TAB START */}
+                  <div
+                    className={`tab-pane fade shadow rounded  dashboard-tab ${
+                      activeTab === "v-pills-profile" ? "show active" : ""
+                    }`}
+                    id="v-pills-profile"
+                    role="tabpanel"
+                    style={{paddingTop: '0px!important'}}
+                  >
+                  
+                    <ProfileFormComponent/>
+                  </div>
+               {/* PROFILE TAB END */}
 
-       </section>
-   </section>
-      {/* <FooterComponent/> */}
-    
 
+                  <div
+                    className={`tab-pane fade shadow rounded dashboard-tab ${
+                      activeTab === "v-pills-subscription" ? "show active" : ""
+                    }`}
+                    id="v-pills-subscription"
+                    role="tabpanel"
+                  >
+                     <SubscriptionFormComponent/>
+                  </div>
+
+                  {/* <div
+                    className={`tab-pane fade shadow rounded   dashboard-tab ${
+                      activeTab === "v-pills-cart" ? "show active" : ""
+                    }`}
+                    id="v-pills-cart"
+                    role="tabpanel"
+                  >
+                    <h4 className="font-italic mb-4">Reviews</h4>
+                    <p className="font-italic text-muted mb-2">
+                      Lorem ipsum dolor sit amet...
+                    </p>
+                  </div> */}
+
+                  {/* <div
+                    className={`tab-pane fade shadow rounded   dashboard-tab ${
+                      activeTab === "v-pills-payment" ? "show active" : ""
+                    }`}
+                    id="v-pills-payment"
+                    role="tabpanel"
+                  >
+                    <h4 className="font-italic mb-4">Payment</h4>
+                    <p className="font-italic text-muted mb-2">
+                     
+                    </p>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
     </>
-  )
-}
+  );
+};
+
 export default SmartDashboardComponent;

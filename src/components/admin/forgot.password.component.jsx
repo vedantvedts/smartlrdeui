@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './login.css';
 import HeaderComponent from "components/header/header";
-import NavbarComponent from "components/header/navbar";
+import NavbarComponent from "components/header/top.navbar";
 
 const ForgotPasswordComponent = () => {
 
