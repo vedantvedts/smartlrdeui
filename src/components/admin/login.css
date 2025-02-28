@@ -61,6 +61,7 @@
   }
   
   .required-input{
+    margin-left:2px!important;
     color:red!important;
     padding-right:6px!important;
 }

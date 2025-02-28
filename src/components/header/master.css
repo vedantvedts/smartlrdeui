@@ -1,0 +1,4 @@
+.full-width-form {
+    width: 100% !important; /* Full width */
+    max-width: 100% !important; /* Prevents shrinking */
+  }

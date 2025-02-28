@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
+
 //import Dashboard from './components/Dashboard/dashboard.component';
 //import LandingPage from './components/Dashboard/landing.component';
 //import LandingPageComponent from './components/Landing/LandingPage.component';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPasswordComponent />} />
         <Route path="/contact" element={<ContactFormComponent />} />
 
+        <Route path="/membership" element={<ContactFormComponent />} />
         <Route path="/dashboard" element={<SmartDashboardComponent />} />
 
        

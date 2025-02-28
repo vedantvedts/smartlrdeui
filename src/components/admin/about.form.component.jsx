@@ -1,10 +1,9 @@
 import React from "react";
 import HeaderComponent from "components/header/header";
-import NavbarComponent from "components/header/navbar";
+import NavbarComponent from "components/header/top.navbar";
 import AboutUsComponent from "components/admin/about.component";
 import RegisterComponent from "components/admin/register.component";
 import LoginComponent from "components/admin/login.component";
-import ContactComponent from "components/admin/contact.component";
 import FooterComponent from "components/footer/footer";
 
 import { useEffect, useState } from "react";
@@ -92,7 +91,7 @@ const AboutComponent = () => {
              </div>
       </section> 
 
-     <ContactComponent/>
+ 
      <FooterComponent/>
 
 

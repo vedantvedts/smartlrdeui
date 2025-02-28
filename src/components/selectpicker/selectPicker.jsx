@@ -1,20 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
-import "./selectPicker.css"; // Import the updated CSS
+import "./selectPicker.css"; // Ensure proper styles are in place
 
-const SelectPicker = ({ options, label, value, handleChange, readOnly, placeholder = "" }) => {
+const SelectPicker = ({ 
+  options, 
+  label, 
+  value, 
+  handleChange, 
+  readOnly, 
+  required = false, 
+  error 
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  const [isTouched, setIsTouched] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Improved search: Prioritize matches at the start of words
+  // Filtered options based on search term
   const filteredOptions = options
     .filter((option) => option.label.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a, b) => {
       const indexA = a.label.toLowerCase().indexOf(searchTerm.toLowerCase());
       const indexB = b.label.toLowerCase().indexOf(searchTerm.toLowerCase());
-      return indexA - indexB; // Prioritize matches appearing earlier in the word
+      return indexA - indexB;
     });
 
   // Handle keyboard navigation
@@ -59,24 +68,30 @@ const SelectPicker = ({ options, label, value, handleChange, readOnly, placehold
 
   return (
     <div className={`selectpicker-container ${isOpen ? "active" : ""}`} ref={dropdownRef}>
-      {/* Label */}
-      <label className="selectpicker-label">{label}</label>
-
+      
       {/* Custom Dropdown */}
       <div
-        className="selectpicker-dropdown-container"
+        className={`selectpicker-dropdown-container ${error && isTouched ? "error-border" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
         tabIndex="0"
         onKeyDown={handleKeyDown}
+        onBlur={() => setIsTouched(true)}
       >
+        {/* Floating Label (Inside Dropdown) */}
+        <label className={`floating-placeholder ${value ? "active" : ""}`}>
+          {label}
+          {required && <span className="required-asterisk"> *</span>}
+        </label>
+
+        {/* Readonly Input */}
         <input
           type="text"
           className="selectpicker-dropdown"
           value={value?.label || ""}
-          placeholder={placeholder}
           readOnly
           disabled={readOnly}
         />
+
         {/* Arrow Icon */}
         <span className="selectpicker-arrow">
           {isOpen ? <FaChevronUp /> : <FaChevronDown />}
@@ -98,27 +113,30 @@ const SelectPicker = ({ options, label, value, handleChange, readOnly, placehold
 
           {/* Options List */}
           {filteredOptions.length > 0 ? (
-  filteredOptions.map((option, index) => (
-    <div
-      key={option.value}
-      className={`selectpicker-option 
-        ${index === highlightIndex ? "highlighted" : ""} 
-        ${option.value === value?.value ? "selected" : ""}`}
-      onClick={() => {
-        handleChange(option);
-        setIsOpen(false);
-        setSearchTerm(""); // Reset search
-      }}
-      onMouseEnter={() => setHighlightIndex(index)}
-    >
-      {option.label}
-    </div>
-  ))
-) : (
-  <div className="selectpicker-option">No results found</div>
-)}
+            filteredOptions.map((option, index) => (
+              <div
+                key={option.value}
+                className={`selectpicker-option 
+                  ${index === highlightIndex ? "highlighted" : ""} 
+                  ${option.value === value?.value ? "selected" : ""}`}
+                onClick={() => {
+                  handleChange(option);
+                  setIsOpen(false);
+                  setSearchTerm(""); // Reset search
+                }}
+                onMouseEnter={() => setHighlightIndex(index)}
+              >
+                {option.label}
+              </div>
+            ))
+          ) : (
+            <div className="selectpicker-option">No results found</div>
+          )}
         </div>
       )}
+
+      {/* Error Message */}
+      {error && isTouched && <div className="invalid-feedback">{error}</div>}
     </div>
   );
 };

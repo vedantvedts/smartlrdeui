@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './register.css';
-import SelectPicker from "components/selectpicker/selectPicker";
+// import SelectPicker from "components/selectpicker/selectPicker";
 
 
 
@@ -30,11 +30,7 @@ const organizations = ["LRDE", "ADE", "CAIR", "DEBEL"];
       .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, "Invalid email format")
       .required("Please enter your email"),
   
-      designation: Yup.string()
-      .nullable()
-      .required("Please select designation"),
-    
-      organization: Yup.string().required("Please select organization"),
+
   });
   
 
@@ -47,7 +43,7 @@ const organizations = ["LRDE", "ADE", "CAIR", "DEBEL"];
            
 
                   <Formik
-                    initialValues={{ name: "", mobileno: "", emailId: "", designation: "", organization: { label: "LRDE", value: "LRDE" } }}
+                    initialValues={{ name: "", mobileno: "", emailId: "" }}
 
                     validationSchema={validationSchema}
                     onSubmit={(values) => {
@@ -115,45 +111,6 @@ const organizations = ["LRDE", "ADE", "CAIR", "DEBEL"];
                           </div>
                         </div>
 
-
-
-                            <div className="mb-3" >
-                              <div className="form-floating">
-                              <SelectPicker
-  // label="Designation"
-  options={designations.map(designation => ({ label: designation, value: designation }))}
-  value={values.designation ? { label: values.designation, value: values.designation } : null}
-  handleChange={(selectedOption) => setFieldValue("designation", selectedOption?.value || "")}
-
-  readOnly={false}
-  placeholder="Select Designation"
-  required={true}  
-/>
-<ErrorMessage name="designation" component="div" className="invalid-feedback" />
-     
-                              </div>
-                            </div>
-
-                          
-                                <div className="mb-3" >
-                                  <div className="form-floating">
-                                     {/* Organization Select Picker */}
-      <SelectPicker
-        // label="Organization"
-        options={organizations.map((organization) => ({ label: organization, value: organization }))}
-        value={values.organization}
-        handleChange={(selectedOption) => setFieldValue("organization", selectedOption)}
-        readOnly={false}
-          placeholder="Select Organization"
-          required={true}  
-      />
-      <ErrorMessage name="organization" component="div" className="invalid-feedback" />
-                                    {/* <label htmlFor="organization">Organization<span className="required-input">*</span></label> */}
-
-                                  </div>
-                                </div>
-                         
-                         
 
                           {/* Submit Button */}
                           <div className="d-flex justify-content-center mt-4 pt-3">

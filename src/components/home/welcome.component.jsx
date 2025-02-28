@@ -3,11 +3,10 @@ import home from "../../assets/images/home.jpg";
 import "./welcome.css";
 import { useEffect, useState } from "react";
 import HeaderComponent from "components/header/header";
-import NavbarComponent from "components/header/navbar";
+import TopNavbarComponent from "components/header/top.navbar";
 import RegisterComponent from "components/admin/register.component";
 import LoginComponent from "components/admin/login.component";
 import AboutUsComponent from "components/admin/about.component";
-import ContactComponent from "components/admin/contact.component";
 import FooterComponent from "components/footer/footer";
 
 const imagesForJoinSmart = [
@@ -32,7 +31,7 @@ const WelcomeComponent = () => {
   return (
       <>
        <HeaderComponent />
-       <NavbarComponent />
+       <TopNavbarComponent />
 
 
       <section id="fixed-sub-nav" className="fade-in">
@@ -41,9 +40,12 @@ const WelcomeComponent = () => {
           <div className="container">
             <h1 className="pt-2">Welcome to SMART</h1>
             <p>
-              Join us as we explore the cutting-edge advancements in microwave,
-              antenna, and radar technologies. Our community of experts is
+              Join us as we explore cutting-edge microwave, 
+              antenna, and radar advancements. Our community of experts is 
               dedicated to fostering innovation, education, and collaboration.
+              {/* Join us as we explore the cutting-edge advancements in microwave,
+              antenna, and radar technologies. Our community of experts is
+              dedicated to fostering innovation, education, and collaboration. */}
             </p>
           </div>
         </div>
@@ -54,17 +56,21 @@ const WelcomeComponent = () => {
             <div className="row">
               {/* Events Column */}
 
-
               <div className="col-lg-6 mb-4 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                 <h1 style={{ textAlign: 'left' }}>Society for Microwaves, Antennas and Radar Technologies</h1>
                 <p style={{ textAlign: 'justify' }}>
-                  IRSI Committee proposed SMART team to promote the general advancement of educational, training and engineering
+                  Society for Microwaves, Antennas and Radar Technologies(SMART) promotes the general advancement of educational, training and engineering 
+                  aspects of Microwaves, Antennas, Radar Technologies, their allied subjects, and their applications. SMART may 
+                  facilitate the exchange of information and ideas on these subjects amongst the members of the Society. Further 
+                  to this, it has been advised to undertake other activities that will further the objectives and aims of the 
+                  Society and promote advancement in Microwaves, Antennas, and Radar Technologies and their allied subjects. 
+                  {/* IRSI Committee proposed SMART team to promote the general advancement of educational, training and engineering
                   aspects of Microwaves, Antennas, Radar Technologies, their allied subjects, and their applications. SMART may
                   facilitate the exchange of information and ideas on these subjects amongst the members of the Society. Further
                   to this, it has been advised to undertake other activities that will further the objectives and aims of the
                   Society and promote advancement in Microwaves, Antennas, and Radar Technologies and their allied subjects. The
                   committee also advised reviving activities of IRSI to make Microwave, Antennas, and Radar Technologies more
-                  popular in the country through SMART. Proposed to start SMART Membership drives with immediate effect.
+                  popular in the country through SMART. Proposed to start SMART Membership drives with immediate effect. */}
                 </p>
               </div>
 
@@ -89,7 +95,13 @@ const WelcomeComponent = () => {
                         </div>
 
                         <div className="event-item mb-3">
-                          <h5 className="event-title">SMARTLRDE 2024 Announcement</h5>
+                          <h5 className="event-title">
+                            SMARTLRDE 2025 Announcement: Tutorials/Workshop on “Advances in Microwaves, Antennas and Radar Technologies
+                            <br/>
+                            Venue: HAL Convention centre (Tentative) 
+                            <br/>
+                            Proposed date: 24-26, April 2025
+                            </h5>
                           <p className="event-description">
                             <b>Click here to download:</b>
                           </p>
@@ -164,7 +176,7 @@ const WelcomeComponent = () => {
 
       </section> 
       
-      <ContactComponent/>
+
       <FooterComponent/>
     
       

@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import './login.css';
 
-import ContactComponent from "components/admin/contact.component";
 import HeaderComponent from "components/header/header";
-import NavbarComponent from "components/header/navbar";
+import NavbarComponent from "components/header/top.navbar";
 import LoginComponent from "components/admin/login.component";
 import FooterComponent from "components/footer/footer";
 
@@ -29,7 +28,7 @@ const LoginFormComponent = () => {
 
       </section>
 
-          <ContactComponent/>
+
           <FooterComponent/>
 
       
