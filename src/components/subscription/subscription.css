@@ -9,7 +9,7 @@
   }
   
   .subscription-title {
-    margin-top: 20px;
+    margin-top: 0px;
   }
   
   .subscription-title h1 {
@@ -38,7 +38,7 @@
   
   .subscription-container {
     background-color: white;
-    margin-top: 10px;
+    margin-top: 25px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -80,8 +80,16 @@
     padding: 20px;
   }
   
-  .subscription-card-wrapper h1 {
-    font-size: var(--primary-font-size);
+  .subscription-card-name  {
+    font-size: 1.7rem!important;
+    /* color:#344b75!important; */
+  }
+
+  .subscription-card-price{
+    font-size: 1.7rem!important;
+    letter-spacing: "1px";
+     word-spacing: "2px";
+     /* color:#344b75!important; */
   }
   
   .subscription-title-card {
@@ -110,9 +118,7 @@
     align-items: center;
   }
   
-  .subscription-list-price h1 {
-    font-size: var(--primary-font-size);
-  }
+
   .subscription-list-price p {
     font-size: var(--secondary-font-size);
   }
@@ -145,4 +151,4 @@
     .subscription-card {
       width: 100%;
     }
-  }/*# sourceMappingURL=style.css.map */
+  }

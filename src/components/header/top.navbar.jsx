@@ -1,8 +1,6 @@
-import './master.css';
-import './header.css';
+import './top.navbar.css';
 import React from "react";
 import { useEffect, useState } from "react";
-import logo from "../../assets/images/smart2.jpg";
 
 
 const NavbarComponent = () => {
@@ -18,10 +16,6 @@ const NavbarComponent = () => {
     }
   }
     
-
-
-
-
     return (
         <>
   

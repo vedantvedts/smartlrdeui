@@ -4,10 +4,10 @@ import * as Yup from "yup";
 import './login.css';
 import { FaFacebookF, FaHome, FaInstagramSquare, FaLinkedinIn, FaPhoneAlt, FaSignInAlt, FaUsers } from "react-icons/fa";
 
-import ContactComponent from "components/admin/contact.component";
+
 import FooterComponent from "components/footer/footer";
 import HeaderComponent from "components/header/header";
-import NavbarComponent from "components/header/navbar";
+import NavbarComponent from "components/header/top.navbar";
 import { FaXTwitter } from 'react-icons/fa6';
 
 
@@ -27,7 +27,7 @@ const ContactFormComponent = () => {
                          <div className="" style={{textAlign:'justify'}}>
                            <h4 className="text-light mb-4 text-about" >Contact Us</h4>
                            <p className="mb-2 about-text"> <i className="fa fa-user me-3"></i>Dr. SOMSING RATHOD, SC F</p>
-                           <p className="mb-2 about-text"> <i className="fa fa-phone me-3"></i> 9880107412</p>
+                           <p className="mb-2 about-text"> <i className="fa fa-phone me-3"></i>9880107412</p>
                            <p className="mb-2 about-text"> <i className="fa fa-envelope me-3"></i>somsing.rathod.lrde@gov.in</p>
                            <div className="d-flex pt-2" style={{textAlign:'justify'}}>
                              <a className="btn btn-outline-light btn-social" href="/"><FaFacebookF size={20} color="#1877F2" /></a>

@@ -2,10 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import HeaderComponent from "components/header/header";
-import NavbarComponent from "components/header/navbar";
+import NavbarComponent from "components/header/top.navbar";
 import RegisterComponent from "components/admin/register.component";
 import LoginComponent from "components/admin/login.component";
-import ContactComponent from "components/admin/contact.component";
 import FooterComponent from "components/footer/footer";
 
 import './register.css';
@@ -23,7 +22,7 @@ const RegisterFormComponent = () => {
     <section  id="fixed-sub-nav" className="vh-100 gradient-background">
    
    
-    <section id="register" className="">
+    <section id="register"className="pb-5">
         <div className="container ">
           <div className="row d-flex justify-content-center align-items-center ">
             <div className="col-lg-6 col-md-8 col-12  mt-2 pt-1">
@@ -33,7 +32,7 @@ const RegisterFormComponent = () => {
         </div>
         </section>
 
-        <section id="register" className="py-5">
+        {/* <section id="register" className="py-5">
          <div className="container">
              <div className="row align-items-center">
                 <div className="col-md-6"> 
@@ -49,9 +48,9 @@ const RegisterFormComponent = () => {
                 
                 </div>
              </div>
-      </section> 
+      </section>  */}
 
-      <ContactComponent/>
+
       <FooterComponent/>
       </section>
      
