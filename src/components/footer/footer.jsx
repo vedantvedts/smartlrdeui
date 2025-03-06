@@ -30,13 +30,16 @@ const FooterComponent = () => {
               </div>
               <ul>
                 <li className="nav_first">
-                  <a className="nav_a">Dr. SOMSING RATHOD, SC F</a>
+                  <a className="nav_a"><i className="fa fa-user me-3"></i>Dr. SOMSING RATHOD, SC F</a>
                 </li>
                 <li>
-                  <a className="nav_a">9880107412</a>
+                  <a className="nav_a"><i className="fa fa-briefcase me-3"></i>General Secretary, SMART</a>
+                </li>
+                <li>
+                  <a className="nav_a"><i className="fa fa-phone me-3"></i>9880107412</a>
                 </li>
                 <li className="nav_last">
-                  <a className="nav_a">somsing.rathod.lrde@gov.in</a>
+                  <a className="nav_a"><i className="fa fa-envelope me-3"></i>somsing.rathod.lrde@gov.in</a>
                 </li>
               </ul>
             </div>

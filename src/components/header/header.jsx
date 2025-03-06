@@ -73,7 +73,8 @@ const HeaderComponent = () => {
             <div className="title-container col-md-7">
               <p>Society for Microwaves, Antennas and Radar Technologies</p>
             </div>
-            {isLoggedIn && (
+            {isLoggedIn && !isMobileView && (
+
   <>
     
     
@@ -93,6 +94,26 @@ const HeaderComponent = () => {
           <div className="nav-bar-container col-md-12">{/* header */}</div>
         </header>
       )}
+
+{isMobileView && isLoggedIn && (
+  <nav 
+    className="custom-mobile-nav" >
+   <ul className="custom-mobile-menu">
+     <li onClick={handleDashboard} className="custom-mobile-item">
+       <MdDashboard className="custom-icon" /> <span>Dashboard</span>
+     </li>
+     <li onClick={handleChangePassword} className="custom-mobile-item">
+       <MdLockReset className="custom-icon" /> <span>Change Password</span>
+     </li>
+     <li onClick={handleLogout} className="custom-mobile-item">
+       <IoLogOutSharp className="custom-icon" /> <span>Log Out</span>
+     </li>
+   </ul>
+ </nav>
+ 
+      )}
+
+
       {isMobileView && !showMainHeader && (
         <div className="minimal-header">
           <p>SMART</p>

@@ -2,11 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
+import ScrollToTop from './ScrollTop'; // Import the scroll fix
 
-//import Dashboard from './components/Dashboard/dashboard.component';
-//import LandingPage from './components/Dashboard/landing.component';
-//import LandingPageComponent from './components/Landing/LandingPage.component';
-//import AboutPageComponent from './components/Landing/about.component';
 import WelcomeComponent from 'components/home/welcome.component';
 import AboutUsComponent from 'components/home/about.form.component';
 import RegisterFormComponent from 'components/home/register.form.component';
@@ -19,6 +16,7 @@ import ChangePasswordComponent from 'components/dashboard/change.password.compon
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />  {/* Ensures scroll resets on navigation */}
         <Routes>
         <Route path="/" element={<WelcomeComponent />} />
         <Route path="/aboutus" element={<AboutUsComponent />} />

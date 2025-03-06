@@ -28,6 +28,7 @@ const ChangePasswordComponent = () => {
   return (
     <>
       <HeaderComponent />
+      <div className="smart-main-content">
       <section id="fixed-sub-nav" className="fade-in vh-100">
         <section id="changePassword" className="py-4 header">
           <div className="row d-flex justify-content-center align-items-center">
@@ -117,6 +118,7 @@ const ChangePasswordComponent = () => {
           </div>
         </section>
       </section>
+      </div>
     </>
   );
 };

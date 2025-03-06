@@ -3,7 +3,7 @@ import "./smartDashboard.css";
 import HeaderComponent from "components/header/header";
 import ProfileFormComponent from "components/profile/profile.membership.component";
 import SubscriptionFormComponent from "components/subscription/subscription.membership.component";
-
+import TariffFormComponent from "components/admin/subscription.master.component"
 
 const SmartDashboardComponent = () => {
   const [activeTab, setActiveTab] = useState("v-pills-profile");
@@ -11,7 +11,7 @@ const SmartDashboardComponent = () => {
   return (
     <>
       <HeaderComponent />
-
+      <div className="smart-main-content">
       <section id="fixed-sub-nav" className="fade-in vh-100">
         <section id="dashboard" className="py-4 header">
           <div className="container-fluid">
@@ -50,18 +50,7 @@ const SmartDashboardComponent = () => {
                     </span>
                   </a>
 
-                  {/* <a
-                    className={`nav-link mb-3 px-2 py-2  shadow ${
-                      activeTab === "v-pills-cart" ? "active" : ""
-                    }`}
-                    id="v-pills-cart-tab"
-                    role="tab"
-                    onClick={() => setActiveTab("v-pills-cart")}
-                  >
-                    <span className="font-weight-bold small text-uppercase">
-                      Cart
-                    </span>
-                  </a> */}
+                
 
                   {/* <a
                     className={`nav-link mb-3 px-2 py-2  shadow ${
@@ -75,6 +64,19 @@ const SmartDashboardComponent = () => {
                       Payment
                     </span>
                   </a> */}
+
+                  {/* <a
+                    className={`nav-link mb-3 px-2 py-2  shadow ${
+                      activeTab === "v-pills-tariff" ? "active" : ""
+                    }`}
+                    id="v-pills-tariff-tab"
+                    role="tab"
+                    onClick={() => setActiveTab("v-pills-tariff")}
+                  >
+                    <span className="font-weight-bold small text-uppercase">
+                    Tariff Master
+                    </span>
+                  </a>  */}
                 </div>
               </div>
 
@@ -121,22 +123,20 @@ const SmartDashboardComponent = () => {
 
                   {/* <div
                     className={`tab-pane fade shadow rounded   dashboard-tab ${
-                      activeTab === "v-pills-payment" ? "show active" : ""
+                      activeTab === "v-pills-tariff" ? "show active" : ""
                     }`}
-                    id="v-pills-payment"
+                    id="v-pills-tariff"
                     role="tabpanel"
                   >
-                    <h4 className="font-italic mb-4">Payment</h4>
-                    <p className="font-italic text-muted mb-2">
-                     
-                    </p>
-                  </div> */}
+                     <TariffFormComponent/>
+                  </div>  */}
                 </div>
               </div>
             </div>
           </div>
         </section>
       </section>
+      </div>
     </>
   );
 };

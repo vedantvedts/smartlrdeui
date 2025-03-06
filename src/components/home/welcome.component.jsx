@@ -121,14 +121,15 @@ const WelcomeComponent = () => {
       </section>
 
 
-      <section id="register" className="py-5">
+      
+
+      <section id="login" className="py-5">
          <div className="container">
              <div className="row align-items-center">
-             <div className="col-md-6" style={{marginBottom: 'auto'}}>
-              <h2 className="about-title">Join SMART</h2>
-              {/*Start Banner component*/}
-              <div className="banner-text-image">
-                      <div className="banner-overlay"></div>
+              
+                <div className="col-md-6 mt-3" style={{marginBottom: 'auto'}}>
+                <h2 className="about-title">Log In to Your SMART Account</h2>
+                <div className="banner-overlay"></div>
                          <div className="column-height image-block banner-image-content banner-bg-image mt-4">
                           <img
                          src={imagesForJoinSmart[currentJoinUsImage]}
@@ -138,38 +139,14 @@ const WelcomeComponent = () => {
                            </div>
 
                             <div className="clearfix"></div>
-                          </div>
-
-
-              {/*End Banner component*/}
-              <p className="about-details mt-5 mb-1">
-              SMART promotes organizing annual seminars, workshops, and specialized national-level courses, hosting symposiums and workshops, publishing newsletters and e-newsletters, developing a database of experts, facilities, and bibliographic publications, publishing monographs, and instituting fellowships and awards.
-              </p>
-
-
-            </div>
-                <div className="col-md-6"> 
-                   <RegisterComponent/>
-                </div>
-             </div>
-          </div>
-      </section> 
-
-      
-
-      <section id="login" className="py-5">
-         <div className="container">
-             <div className="row align-items-center">
-                <div className="col-md-6"> 
-                   <LoginComponent/>
-                </div>
-                <div className="col-md-6 mt-3" style={{marginBottom: 'auto'}}>
-                <h2 className="about-title">Log In to Your SMART Account</h2>
-
+                     
                <p className="about-details mt-4">
                As a professional in the fields of microwaves, antennas, and radar technologies, logging into the Society for Microwaves, Antennas and Radar Technologies (SMART) platform provides you with exclusive access to a wealth of resources and opportunities. By becoming a member, you can participate in specialized workshops, receive newsletters, and connect with a network of experts in areas such as RF and microwave engineering, millimeter-wave and terahertz technologies, and radar systems. Engaging with SMART will enhance your professional development and keep you informed about the latest advancements in your field.
                        </p> 
             </div>
+            <div className="col-md-6"> 
+                   <LoginComponent/>
+                </div>
                 
                 </div>
              </div>
