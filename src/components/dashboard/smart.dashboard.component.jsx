@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./smartDashboard.css";
 import HeaderComponent from "components/header/header";
 import ProfileFormComponent from "components/profile/profile.membership.component";
-import SubscriptionFormComponent from "components/subscription/subscription.membership.component"
+import SubscriptionFormComponent from "components/subscription/subscription.membership.component";
 
 
 const SmartDashboardComponent = () => {

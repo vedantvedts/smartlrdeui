@@ -1,3 +1,15 @@
+.logoutIcon{
+  color: #fff; 
+ cursor:pointer;
+ font-weight:bold;
+}
+
+.logoutText{
+  color: #fff; 
+  cursor:pointer;
+  font-weight:bold;
+}
+
 
 .header-nav {
     position: sticky;

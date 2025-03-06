@@ -8,12 +8,13 @@ import 'font-awesome/css/font-awesome.min.css';
 //import LandingPageComponent from './components/Landing/LandingPage.component';
 //import AboutPageComponent from './components/Landing/about.component';
 import WelcomeComponent from 'components/home/welcome.component';
-import AboutUsComponent from 'components/admin/about.form.component';
-import RegisterFormComponent from 'components/admin/register.form.component';
-import LoginFormComponent from 'components/admin/login.form.component';
-import ForgotPasswordComponent from 'components/admin/forgot.password.component';
-import ContactFormComponent from 'components/admin/contact.form.component';
+import AboutUsComponent from 'components/home/about.form.component';
+import RegisterFormComponent from 'components/home/register.form.component';
+import LoginFormComponent from 'components/home/login.form.component';
+import ForgotPasswordComponent from 'components/home/forgot.password.component';
+import ContactFormComponent from 'components/home/contact.form.component';
 import SmartDashboardComponent from 'components/dashboard/smart.dashboard.component';
+import ChangePasswordComponent from 'components/dashboard/change.password.component'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
 
         <Route path="/membership" element={<ContactFormComponent />} />
         <Route path="/dashboard" element={<SmartDashboardComponent />} />
+        <Route path="/change-password" element={<ChangePasswordComponent />} />
 
        
         {/* <Route path="/about" element={<AboutPageComponent />} /> */}

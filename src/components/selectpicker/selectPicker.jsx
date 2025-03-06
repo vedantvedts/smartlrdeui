@@ -11,7 +11,7 @@ const SelectPicker = ({
   required = false, 
   error 
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(value?.label || "");
   const [isOpen, setIsOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [isTouched, setIsTouched] = useState(false);
@@ -25,6 +25,12 @@ const SelectPicker = ({
       const indexB = b.label.toLowerCase().indexOf(searchTerm.toLowerCase());
       return indexA - indexB;
     });
+
+  // Handle input change (search within options)
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+    setIsOpen(true);
+  };
 
   // Handle keyboard navigation
   const handleKeyDown = (e) => {
@@ -40,8 +46,8 @@ const SelectPicker = ({
       case "Enter":
         if (highlightIndex >= 0 && filteredOptions[highlightIndex]) {
           handleChange(filteredOptions[highlightIndex]);
+          setSearchTerm(filteredOptions[highlightIndex].label); // Set selected value
           setIsOpen(false);
-          setSearchTerm(""); // Reset search after selection
         }
         break;
       case "Escape":
@@ -72,24 +78,24 @@ const SelectPicker = ({
       {/* Custom Dropdown */}
       <div
         className={`selectpicker-dropdown-container ${error && isTouched ? "error-border" : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
         tabIndex="0"
         onKeyDown={handleKeyDown}
         onBlur={() => setIsTouched(true)}
       >
         {/* Floating Label (Inside Dropdown) */}
-        <label className={`floating-placeholder ${value ? "active" : ""}`}>
+        <label className={`floating-placeholder ${searchTerm ? "active" : ""}`}>
           {label}
           {required && <span className="required-asterisk"> *</span>}
         </label>
 
-        {/* Readonly Input */}
+        {/* Editable Input for Search & Selection */}
         <input
           type="text"
           className="selectpicker-dropdown"
-          value={value?.label || ""}
-          readOnly
+          value={searchTerm}
+          onChange={handleInputChange}
           disabled={readOnly}
+          onClick={() => setIsOpen(true)}
         />
 
         {/* Arrow Icon */}
@@ -101,16 +107,6 @@ const SelectPicker = ({
       {/* Searchable Dropdown */}
       {isOpen && (
         <div className="selectpicker-options-container">
-          {/* Search Bar */}
-          <input
-            type="text"
-            className="selectpicker-search"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-
           {/* Options List */}
           {filteredOptions.length > 0 ? (
             filteredOptions.map((option, index) => (
@@ -121,8 +117,8 @@ const SelectPicker = ({
                   ${option.value === value?.value ? "selected" : ""}`}
                 onClick={() => {
                   handleChange(option);
+                  setSearchTerm(option.label); // Set input value
                   setIsOpen(false);
-                  setSearchTerm(""); // Reset search
                 }}
                 onMouseEnter={() => setHighlightIndex(index)}
               >

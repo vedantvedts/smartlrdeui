@@ -13,7 +13,7 @@ const FooterComponent = () => {
     return (
         <>
         <div className="navFooter">
-        <a href="javascript:void(0)" id="navBackToTop" aria-label="Back to top" onClick={scrollToTop}>
+        <a id="navBackToTop" aria-label="Back to top" onClick={scrollToTop}>
           <div className="navFooterBackToTop">
             <span className="navFooterBackToTopText">
               Back to top&nbsp;<FaArrowUp className="backToTopIcon" />
