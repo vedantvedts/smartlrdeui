@@ -22,13 +22,21 @@
 }
 
 .custom-mobile-nav {
-  position: fixed;
+  position: static;
   width: 100%;
   background: #f1f5f9;
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+
+@media (max-width: 768px) { 
+  .smart-main-content {
+    /* margin-top: 60px;  */
+  }
+}
+
+
 
 
   .title-container p {
@@ -107,13 +115,6 @@
     }
   }
 
-  @media (max-width: 768px) { 
-    .smart-main-content {
-      margin-top: 60px; /* Leaves space for the mobile nav only on mobile */
-    }
-  }
-  
-  
 /* Flexbox for even spacing */
 .custom-mobile-menu {
   display: flex;

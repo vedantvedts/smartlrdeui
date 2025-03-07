@@ -3,7 +3,8 @@ import "./smartDashboard.css";
 import HeaderComponent from "components/header/header";
 import ProfileFormComponent from "components/profile/profile.membership.component";
 import SubscriptionFormComponent from "components/subscription/subscription.membership.component";
-import TariffFormComponent from "components/admin/subscription.master.component"
+import TariffFormComponent from "components/admin/membershipFee.master.component";
+import MembershipFormComponent from "components/membership/membership.form.component";
 
 const SmartDashboardComponent = () => {
   const [activeTab, setActiveTab] = useState("v-pills-profile");
@@ -54,29 +55,29 @@ const SmartDashboardComponent = () => {
 
                   {/* <a
                     className={`nav-link mb-3 px-2 py-2  shadow ${
-                      activeTab === "v-pills-payment" ? "active" : ""
+                      activeTab === "v-pills-membership" ? "active" : ""
                     }`}
-                    id="v-pills-payment-tab"
+                    id="v-pills-membership-tab"
                     role="tab"
-                    onClick={() => setActiveTab("v-pills-payment")}
+                    onClick={() => setActiveTab("v-pills-membership")}
                   >
                     <span className="font-weight-bold small text-uppercase">
-                      Payment
-                    </span>
-                  </a> */}
-
-                  {/* <a
-                    className={`nav-link mb-3 px-2 py-2  shadow ${
-                      activeTab === "v-pills-tariff" ? "active" : ""
-                    }`}
-                    id="v-pills-tariff-tab"
-                    role="tab"
-                    onClick={() => setActiveTab("v-pills-tariff")}
-                  >
-                    <span className="font-weight-bold small text-uppercase">
-                    Tariff Master
+                    Membership
                     </span>
                   </a>  */}
+
+                   <a
+                    className={`nav-link mb-3 px-2 py-2  shadow ${
+                      activeTab === "v-pills-membership-fee" ? "active" : ""
+                    }`}
+                    id="v-pills-membership-fee-tab"
+                    role="tab"
+                    onClick={() => setActiveTab("v-pills-membership-fee")}
+                  >
+                    <span className="font-weight-bold small text-uppercase">
+                    Membership Fee
+                    </span>
+                  </a>  
                 </div>
               </div>
 
@@ -108,28 +109,25 @@ const SmartDashboardComponent = () => {
                      <SubscriptionFormComponent/>
                   </div>
 
-                  {/* <div
+                   {/* <div
                     className={`tab-pane fade shadow rounded   dashboard-tab ${
-                      activeTab === "v-pills-cart" ? "show active" : ""
+                      activeTab === "v-pills-membership" ? "show active" : ""
                     }`}
-                    id="v-pills-cart"
+                    id="v-pills-membership"
                     role="tabpanel"
                   >
-                    <h4 className="font-italic mb-4">Reviews</h4>
-                    <p className="font-italic text-muted mb-2">
-                      Lorem ipsum dolor sit amet...
-                    </p>
-                  </div> */}
+                   <MembershipFormComponent/>
+                  </div>  */}
 
-                  {/* <div
+                   <div
                     className={`tab-pane fade shadow rounded   dashboard-tab ${
-                      activeTab === "v-pills-tariff" ? "show active" : ""
+                      activeTab === "v-pills-membership-fee" ? "show active" : ""
                     }`}
-                    id="v-pills-tariff"
+                    id="v-pills-membership-fee"
                     role="tabpanel"
                   >
                      <TariffFormComponent/>
-                  </div>  */}
+                  </div>  
                 </div>
               </div>
             </div>

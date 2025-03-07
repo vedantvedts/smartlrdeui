@@ -1,0 +1,28 @@
+/* Light Green Button */
+.btn-light-green {
+  background-color: #d4edda!important; /* Light Green */
+  border: 1px solid #58e478;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-light-green:hover {
+  background-color: #c3e6cb!important;; /* Slightly darker green */
+  border-color: #45c76d;
+  color: #155724;
+  box-shadow: 0 0 8px rgba(72, 239, 112, 0.5);
+}
+
+/* Light Red Button */
+.btn-light-red {
+  background-color: #f8d7da!important;; /* Light Red */
+  border: 1px solid #fd6b7a;
+  color: #c82333;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-light-red:hover {
+  background-color: #f5c6cb!important;; /* Slightly darker red */
+  border-color: #e46070;
+  color: #721c24;
+  box-shadow: 0 0 8px rgba(253, 107, 122, 0.5);
+}
