@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from '../environment/config';
 import { authHeader } from './auth.header';
-
 const API_URL = config.API_URL;
 
 
@@ -21,10 +20,7 @@ export const login = async (username, password) => {
       }));
 
 
-       // await customAuditStampingLogin(username);
-    // const emp = await getEmpDetails(username);
-    // localStorage.setItem('roleId',emp.qmsFormRoleId)
-    // localStorage.setItem('empId',emp.empId)
+   
 
       return response.data;
     }
@@ -57,21 +53,47 @@ export const logout = async (logoutType) => {
   };
 
 
+ // Method to fetch user details using the logged-in user's information
+ export const getUserDetails = async () => {
+  const user = JSON.parse(localStorage.getItem('user')); 
+  const username = user?.username; 
 
-// export const getCurrentUser = () => {
-//     return JSON.parse(localStorage.getItem('user'));
-//   };
+  if (!username) {
+    throw new Error('No user found');
+  }
 
-//   export const  getEmpDetails= async(username) => {
-//     if (!username) {
-//       throw new Error('No user found');
-//     } try {
-//       return (await axios.post(`${API_URL}get-emp-details`,{},{headers : {'Content-Type': 'application/json', ...authHeader()}})).data;
-//     } catch (error) {
-//       console.error('Error occurred in getEmpDetails():', error);
-//       throw error;
-//     }
-//   };
+  console.log("🔥 Username from localStorage:", username);
+
+  try {
+    const response = await axios.post(
+      `${API_URL}get-user-details`,
+      {}, // Empty body
+      { headers: { 'Content-Type': 'application/json', ...authHeader() } }
+    );
+
+    console.log("🔥 Response received:", response.data);
+    const userDetails = response.data;
+
+    // Assuming userDetails is an array with a single object
+    if (!Array.isArray(userDetails) || userDetails.length === 0) {
+      throw new Error('No user details found');
+    }
+
+    const details = userDetails[0]; // Extract first object
+    const empName = details.name;
+    const emailId = details.email;
+    const phone = details.phone;
+    // const role = details.role;
+
+    return { empName, emailId, phone }; // Return structured object
+
+  } catch (error) {
+    console.error('🔥 Error occurred in getUserDetails:', error);
+    throw error;
+  }
+};
+
+
 
   // Function for custom audit stamping logout
 // export const customAuditStampingLogout = async (username, logoutType) => {

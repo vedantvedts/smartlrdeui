@@ -5,6 +5,7 @@ import SelectPicker from "components/selectpicker/selectPicker";
 import "./profile.css";
 import { format } from "date-fns";
 import { Country, State, City } from "country-state-city";
+import { getUserDetails } from 'services/auth.service';
 
 const personalInfoValidationSchema = Yup.object({
   organization: Yup.string().required("Organization is required"),
@@ -172,12 +173,49 @@ const ProfileFormComponent = () => {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [displayDate, setDisplayDate] = useState(""); // Stores dd/mm/yyyy for UI
+  const [initialValues, setInitialValues] = useState({
+    name: "",
+    emailId: "",
+    mobileNo: "",
+    organization: "",
+    dateOfBirth: "",
+    gender: "",
+    country: "",
+    state: "",
+    city: "",
+    addressType: "Work",
+    address1: "",
+    address2: "",
+    postalCode: "",
+  });
+  
+
 
   useEffect(() => {
-    setCountries(Country.getAllCountries().map((c) => ({ value: c.isoCode, label: c.name })));
+    const fetchData = async () => {
+      try {
+        const { empName, emailId, phone } = await getUserDetails();
+        console.log('zssssssssssssssss'+empName, emailId, phone);
+        setInitialValues((prevValues) => ({
+          ...prevValues, // Preserve existing structure
+          name: empName || "",
+          emailId: emailId || "",
+          mobileNo: phone || "",
+        }));
+
+        setCountries(
+          Country.getAllCountries().map((c) => ({ value: c.isoCode, label: c.name }))
+        );
+      } catch (error) {
+        console.error("Error fetching employee details:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
 
+  
   return (
     <div className="layout">
       {/* Personal Information Formee */}
@@ -193,21 +231,8 @@ const ProfileFormComponent = () => {
       ">
         <div className="page-contents">
         <Formik
- initialValues={{
-  name: "Likitha K M",
-  emailId: "likitha.vedts@gmail.com",
-  mobileNo: "8971728480",
-  organization: "",
-  dateOfBirth: "",
-  gender: "",
-  country: "",
-  state: "",
-  city: "",
-  addressType: "Work",
-  address1: "",
-  address2: "",
-  postalCode: "",
-}}
+ initialValues={initialValues}
+ enableReinitialize={true}
   validationSchema={personalInfoValidationSchema}
   onSubmit={(values) => console.log("Personal Info Submitted:", values)}
   validateOnBlur={true}  
@@ -237,7 +262,6 @@ const ProfileFormComponent = () => {
                 type="text"  
                 id="name" 
                 name="name" 
-                value="Likitha K M"
                 className="form-control disabled-field" 
                 placeholder="Name" 
                 readOnly 
@@ -252,7 +276,6 @@ const ProfileFormComponent = () => {
                 type="text"  
                 id="emailId" 
                 name="emailId" 
-                value="likitha.vedts@gmail.com"
                 className="form-control disabled-field" 
                 placeholder="emailId" 
                 readOnly 
@@ -267,7 +290,6 @@ const ProfileFormComponent = () => {
                 type="text"  
                 id="mobileNo" 
                 name="mobileNo" 
-                value="8971728480"
                 className="form-control disabled-field" 
                 placeholder="mobileNo" 
                 readOnly 
