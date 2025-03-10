@@ -2,7 +2,6 @@ import './top.navbar.css';
 import React from "react";
 import { useEffect, useState } from "react";
 
-
 const NavbarComponent = () => {
 
   const expandNav =() => {

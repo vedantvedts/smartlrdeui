@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import './login.css';
 
+
 import HeaderComponent from "components/header/header";
 import NavbarComponent from "components/header/top.navbar";
-import LoginComponent from "components/admin/login.component";
+import LoginComponent from "components/home/login.component";
 import FooterComponent from "components/footer/footer";
 
 

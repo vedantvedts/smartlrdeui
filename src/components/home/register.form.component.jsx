@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import HeaderComponent from "components/header/header";
 import NavbarComponent from "components/header/top.navbar";
-import RegisterComponent from "components/admin/register.component";
-import LoginComponent from "components/admin/login.component";
+import RegisterComponent from "components/home/register.component";
+import LoginComponent from "components/home/login.component";
 import FooterComponent from "components/footer/footer";
 
 import './register.css';

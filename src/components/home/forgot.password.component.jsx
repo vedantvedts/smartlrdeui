@@ -34,7 +34,6 @@ const ForgotPasswordComponent = () => {
                     initialValues={{ username: "" }}
                     validationSchema={validationSchema}
                     onSubmit={(values) => {
-                      console.log("Form submitted with values FOR FORGOT PASSWORD:", values);
                     }}
                   >
                     {({ touched, errors }) => (

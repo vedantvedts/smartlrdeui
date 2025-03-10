@@ -26,7 +26,8 @@ const ContactFormComponent = () => {
                          {/* Address Section */}
                          <div className="" style={{textAlign:'justify'}}>
                            <h4 className="text-light mb-4 text-about" >Contact Us</h4>
-                           <p className="mb-2 about-text"> <i className="fa fa-user me-3"></i>Dr. SOMSING RATHOD, SC F</p>
+                           <p className="mb-2 about-text"> <i className="fa fa-user me-3"></i>Dr. SOMSING RATHOD</p>
+                           <p className="mb-2 about-text"> <i className="fa fa-briefcase me-3"></i>General Secretary, SMART</p>
                            <p className="mb-2 about-text"> <i className="fa fa-phone me-3"></i>9880107412</p>
                            <p className="mb-2 about-text"> <i className="fa fa-envelope me-3"></i>somsing.rathod.lrde@gov.in</p>
                            <div className="d-flex pt-2" style={{textAlign:'justify'}}>

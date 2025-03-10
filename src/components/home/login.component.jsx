@@ -3,16 +3,58 @@ import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './login.css';
+import { login} from 'services/auth.service'; 
+import config from 'environment/config'; 
+import withRouter from "common/with-router";
 
-const LoginComponent = () => {
+const LoginComponent = (props) => {
 
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
+  const handleLoginSubmit = async (values) => {
+    setMessage("");
+    setLoading(true);
+    await login(values.username, values.password).then(
+      (response) => {
+        
+        if (!response.token) {
+          setLoading(false);
+          setMessage("Login failed. Please try again.");
+         // logout("L");
+         
+          props.router.navigate("/login");
+        } else {
+          
+          props.router.navigate("/dashboard");
+        }
+      },
+      (error) => {
+        let resMessage;
+        if (error.response && error.response.status === 401) {
+          resMessage = "Username or password is incorrect";
+        } else {
+          resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+        }
+        setLoading(false);
+        setMessage(resMessage);
+      }
+    );
+  };
+
+
+
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
+    username: Yup.string()
       .min(5, 'Email address must be at least 5 characters')
       .max(100, 'Email addres must not exceed 100 characters')
       .required('Please enter your Email address'),
@@ -29,11 +71,9 @@ const LoginComponent = () => {
                 <div className="card-body p-md-5">
                   <p className="text-center h2 fw-bold mb-2 pb-4 form-name">Login</p>
                   <Formik
-                    initialValues={{ email: "", password: "" }}
+                    initialValues={{ username: "", password: "" }}
                     validationSchema={validationSchema}
-                    onSubmit={(values) => {
-                      console.log("Form submitted with values:", values);
-                    }}
+                    onSubmit={handleLoginSubmit}
                   >
                     {({ touched, errors }) => (
                       <Form>
@@ -43,14 +83,14 @@ const LoginComponent = () => {
                             <Field
                               type="text"
                               id="email-id"
-                              name="email"
-                              className={`form-control ${touched.email && errors.email ? "is-invalid" : ""}`}
+                              name="username"
+                              className={`form-control ${touched.username && errors.username ? "is-invalid" : ""}`}
                               placeholder="Email address"
                             />
                             <label htmlFor="email">
                               <i className="fa fa-user icon-input"></i>Email address<span className="required-input">*</span>
                             </label>
-                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                            <ErrorMessage name="username" component="div" className="invalid-feedback" />
                           </div>
                         </div>
 
@@ -73,9 +113,7 @@ const LoginComponent = () => {
                     </span>
                      <ErrorMessage name="password" component="div" className="invalid-feedback" />
                     </div>
-                  <div className="text-end mt-3">
-                    <a href="/forgot-password" className="forgot-password-link">Forgot Password?</a>
-                  </div>
+        
                  </div>
 
                         
@@ -88,6 +126,9 @@ const LoginComponent = () => {
                         </div>
 
                         {/* Additional Links */}
+                        <div className="text-center mt-3">
+                        <a href="/forgot-password" className="forgot-password-link">Forgot Password?</a>
+                      </div>
                   
                         <p className="text-center mb-4 mt-4">
                           <span>Don't have an account?  </span>
@@ -103,4 +144,4 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default withRouter(LoginComponent);

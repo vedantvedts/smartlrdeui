@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./side.navbar.css";
 import HeaderComponent from "components/header/header";
-import AboutUsComponent from "components/admin/about.component";
+import AboutUsComponent from "components/home/about.component";
 import ProfileFormComponent from "components/profile/profile.membership.component";
 import SubscriptionComponent from "components/subscription/subscription.membership.component"
 import { logout } from "../../services/auth.service";

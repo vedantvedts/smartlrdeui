@@ -5,6 +5,7 @@ import SelectPicker from "components/selectpicker/selectPicker";
 import "./profile.css";
 import { format } from "date-fns";
 import { Country, State, City } from "country-state-city";
+import { getUserDetails } from 'services/auth.service';
 
 const personalInfoValidationSchema = Yup.object({
   organization: Yup.string().required("Organization is required"),
@@ -40,6 +41,8 @@ const fieldOfStudyOptions = [
   { value: "Biological and Medical Sciences", label: "Biological and Medical Sciences" },
   { value: "Computer Sciences and Information Technologies", label: "Computer Sciences and Information Technologies" },
   { value: "Engineering", label: "Engineering" },
+  { value: "Technology", label: "Technology" },
+  { value: "Science", label: "Science" },
   { value: "Mathematics", label: "Mathematics" },
   { value: "Physical Sciences", label: "Physical Sciences" },
   { value: "Technical Communications, Education, Management, Law and Policy", label: "Technical Communications, Education, Management, Law and Policy" },
@@ -47,29 +50,13 @@ const fieldOfStudyOptions = [
 ];
 
 const degreeAwardedOptions = [
-  { value: "ASOC", label: "Associate of Science" },
-  { value: "Bachelor", label: "Bachelor" },
-  { value: "Bachelor in Info Tech(B.Sc.IT)", label: "Bachelor in Info Tech(B.Sc.IT)" },
-  { value: "Bachelor of Appl Science (BAS)", label: "Bachelor of Appl Science (BAS)" },
-  { value: "BA", label: "Bachelor of Arts" },
-  { value: "Bachelor of Computer Appl(BCA)", label: "Bachelor of Computer Appl(BCA)" },
+  { value: "Bachelor of Computer Application(BCA)", label: "Bachelor of Computer Application(BCA)" },
   { value: "Bachelor of Engineering", label: "Bachelor of Engineering" },
-  { value: "BACH", label: "Bachelor of Science" },
   { value: "Bachelor of Technology", label: "Bachelor of Technology" },
-  { value: "CERTIFICATE", label: "Certificate" },
-  { value: "Dip.-Ing.", label: "Dip.-Ing." },
-  { value: "DIPL", label: "Diploma (Canadian)" },
-  { value: "PHD", label: "Doctor of Philosophy" },
-  { value: "SCD", label: "Doctor of Science" },
-  { value: "Doctorate", label: "Doctorate" },
-  { value: "Dr. Habil", label: "Dr. Habil" },
-  { value: "Dr.-Ing", label: "Dr.-Ing" },
-  { value: "ENGR", label: "Engineer" },
-  { value: "INGR", label: "Engineering (Foreign)" },
-  { value: "EC", label: "External Certification" },
-  { value: "Master", label: "Master" },
-  { value: "Master in Info Tech (M.Sc.IT)", label: "Master in Info Tech (M.Sc.IT)" },
-  { value: "Master of Computer Appl (MCA)", label: "Master of Computer Appl (MCA)" },
+  { value: "Diploma Engineering", label: "Diploma Engineering" },
+  { value: "Ph.D.", label: "Ph.D." },
+  { value: "Master of Science In Information Technology (M.Sc.IT)", label: "Master of Science In Information Technology (M.Sc.IT)" },
+  { value: "Master of Computer Application (MCA)", label: "Master of Computer Application (MCA)" },
   { value: "Master of Engineering", label: "Master of Engineering" },
   { value: "MSTR", label: "Master of Science" },
   { value: "Matura (EU,Russia,China,India)", label: "Matura (EU,Russia,China,India)" },
@@ -151,7 +138,10 @@ const technologyOptions = [
 const titleOptions = [
   { value: "Chairman of the Board/President/CEO", label: "Chairman of the Board/President/CEO" },
   { value: "Chief Engineer/Chief Scientist", label: "Chief Engineer/Chief Scientist" },
-  { value: "Computer Scientist", label: "Computer Scientist" },
+  { value: "Scientist", label: "Scientist" },
+  { value: "Sr. Scientist", label: "Sr. Scientist" },
+  { value: "Technical Officer", label: "Technical Officer" },
+  { value: "Sr. Technical Assistant", label: "Sr. Technical Assistant" },
   { value: "Consultant", label: "Consultant" },
   { value: "Dean/Professor/Instructor", label: "Dean/Professor/Instructor" },
   { value: "Design Engineer", label: "Design Engineer" },
@@ -183,12 +173,49 @@ const ProfileFormComponent = () => {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [displayDate, setDisplayDate] = useState(""); // Stores dd/mm/yyyy for UI
+  const [initialValues, setInitialValues] = useState({
+    name: "",
+    emailId: "",
+    mobileNo: "",
+    organization: "",
+    dateOfBirth: "",
+    gender: "",
+    country: "",
+    state: "",
+    city: "",
+    addressType: "Work",
+    address1: "",
+    address2: "",
+    postalCode: "",
+  });
+  
+
 
   useEffect(() => {
-    setCountries(Country.getAllCountries().map((c) => ({ value: c.isoCode, label: c.name })));
+    const fetchData = async () => {
+      try {
+        const { empName, emailId, phone } = await getUserDetails();
+        console.log('zssssssssssssssss'+empName, emailId, phone);
+        setInitialValues((prevValues) => ({
+          ...prevValues, // Preserve existing structure
+          name: empName || "",
+          emailId: emailId || "",
+          mobileNo: phone || "",
+        }));
+
+        setCountries(
+          Country.getAllCountries().map((c) => ({ value: c.isoCode, label: c.name }))
+        );
+      } catch (error) {
+        console.error("Error fetching employee details:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
 
+  
   return (
     <div className="layout">
       {/* Personal Information Formee */}
@@ -204,21 +231,8 @@ const ProfileFormComponent = () => {
       ">
         <div className="page-contents">
         <Formik
- initialValues={{
-  name: "Likitha K M",
-  emailId: "likitha.vedts@gmail.com",
-  mobileNo: "8971728480",
-  organization: "",
-  dateOfBirth: "",
-  gender: "",
-  country: "",
-  state: "",
-  city: "",
-  addressType: "Work",
-  address1: "",
-  address2: "",
-  postalCode: "",
-}}
+ initialValues={initialValues}
+ enableReinitialize={true}
   validationSchema={personalInfoValidationSchema}
   onSubmit={(values) => console.log("Personal Info Submitted:", values)}
   validateOnBlur={true}  
@@ -248,7 +262,6 @@ const ProfileFormComponent = () => {
                 type="text"  
                 id="name" 
                 name="name" 
-                value="Likitha K M"
                 className="form-control disabled-field" 
                 placeholder="Name" 
                 readOnly 
@@ -263,7 +276,6 @@ const ProfileFormComponent = () => {
                 type="text"  
                 id="emailId" 
                 name="emailId" 
-                value="likitha.vedts@gmail.com"
                 className="form-control disabled-field" 
                 placeholder="emailId" 
                 readOnly 
@@ -278,7 +290,6 @@ const ProfileFormComponent = () => {
                 type="text"  
                 id="mobileNo" 
                 name="mobileNo" 
-                value="8971728480"
                 className="form-control disabled-field" 
                 placeholder="mobileNo" 
                 readOnly 
@@ -399,7 +410,6 @@ const ProfileFormComponent = () => {
       { value: "Home", label: "Home" },
       { value: "Work", label: "Work" },
       { value: "University_College", label: "University/College" },
-      { value: "Other", label: "Other" },
     ].map((option) => (
       <div key={option.value} className="form-check form-check-inline">
         <Field
