@@ -1,67 +1,116 @@
 import axios from 'axios';
 import config from '../environment/config';
 import { authHeader } from './auth.header';
-
 const API_URL = config.API_URL;
 
 
+// Function to handle user login
+export const login = async (username, password) => {
+  try {
+    const response = await axios.post(`${API_URL}authenticate`, {
+      username: username.trim(), // Remove extra spaces
+      password: password.trim()
+    });
+
+    if (response.data.token) {
+
+      localStorage.setItem('user', JSON.stringify({
+        token: response.data.token,
+        username: username
+      }));
 
 
-export const getCurrentUser = () => {
-    return JSON.parse(localStorage.getItem('user'));
-  };
+   
 
-  export const  getEmpDetails= async(username) => {
-    if (!username) {
-      throw new Error('No user found');
-    } try {
-      return (await axios.post(`${API_URL}get-emp-details`,{},{headers : {'Content-Type': 'application/json', ...authHeader()}})).data;
-    } catch (error) {
-      console.error('Error occurred in getEmpDetails():', error);
-      throw error;
-    }
-  };
-
-  // Function for custom audit stamping logout
-export const customAuditStampingLogout = async (username, logoutType) => {
-    if (!username) {
-      throw new Error('No user found');
-    }
-  
-    try {
-      const response = await axios.post(
-        `${API_URL}custom-audit-stamping-logout`,
-        { username, logoutType },  
-        { headers: { 'Content-Type': 'application/json', ...authHeader() } }
-      );
       return response.data;
-    } catch (error) {
-      console.error('Error occurred in customAuditStampingLogout:', error);
-      throw error;
     }
-  };
+
   
+    return response.data;
+
+    
+  } catch (error) {
+    console.error('Error occurred in login:', error);
+    throw error;
+  }
+
+
+};
+
 
 
 export const logout = async (logoutType) => {
-    const user = getCurrentUser();
-    if (user && user.username) {
       try {
-  
-         customAuditStampingLogout(user.username, logoutType);
+        // customAuditStampingLogout(user.username, logoutType);
         localStorage.removeItem('user');
-        localStorage.removeItem('roleId');
-        localStorage.removeItem('password');
+        localStorage.clear();
   
   
       } catch (error) {
         console.error('Error occurred in logout:', error);
         throw error; 
       }
-    } else {
-      // No user found in localStorage, just remove the item
-      localStorage.removeItem('user');
-      localStorage.removeItem('roleId');
-      localStorage.removeItem('password');
-    }
   };
+
+
+ // Method to fetch user details using the logged-in user's information
+ export const getUserDetails = async () => {
+  const user = JSON.parse(localStorage.getItem('user')); 
+  const username = user?.username; 
+
+  if (!username) {
+    throw new Error('No user found');
+  }
+
+  console.log("🔥 Username from localStorage:", username);
+
+  try {
+    const response = await axios.post(
+      `${API_URL}get-user-details`,
+      {}, // Empty body
+      { headers: { 'Content-Type': 'application/json', ...authHeader() } }
+    );
+
+    console.log("🔥 Response received:", response.data);
+    const userDetails = response.data;
+
+    // Assuming userDetails is an array with a single object
+    if (!Array.isArray(userDetails) || userDetails.length === 0) {
+      throw new Error('No user details found');
+    }
+
+    const details = userDetails[0]; // Extract first object
+    const empName = details.name;
+    const emailId = details.email;
+    const phone = details.phone;
+    // const role = details.role;
+
+    return { empName, emailId, phone }; // Return structured object
+
+  } catch (error) {
+    console.error('🔥 Error occurred in getUserDetails:', error);
+    throw error;
+  }
+};
+
+
+
+  // Function for custom audit stamping logout
+// export const customAuditStampingLogout = async (username, logoutType) => {
+//     if (!username) {
+//       throw new Error('No user found');
+//     }
+  
+//     try {
+//       const response = await axios.post(
+//         `${API_URL}custom-audit-stamping-logout`,
+//         { username, logoutType },  
+//         { headers: { 'Content-Type': 'application/json', ...authHeader() } }
+//       );
+//       return response.data;
+//     } catch (error) {
+//       console.error('Error occurred in customAuditStampingLogout:', error);
+//       throw error;
+//     }
+//   };
+  
