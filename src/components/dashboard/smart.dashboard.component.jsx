@@ -53,7 +53,7 @@ const SmartDashboardComponent = () => {
 
                 
 
-                  {/* <a
+                   <a
                     className={`nav-link mb-3 px-2 py-2  shadow ${
                       activeTab === "v-pills-membership" ? "active" : ""
                     }`}
@@ -64,7 +64,7 @@ const SmartDashboardComponent = () => {
                     <span className="font-weight-bold small text-uppercase">
                     Membership
                     </span>
-                  </a>  */}
+                  </a>  
 
                    <a
                     className={`nav-link mb-3 px-2 py-2  shadow ${
@@ -109,7 +109,7 @@ const SmartDashboardComponent = () => {
                      <SubscriptionFormComponent/>
                   </div>
 
-                   {/* <div
+                   <div
                     className={`tab-pane fade shadow rounded   dashboard-tab ${
                       activeTab === "v-pills-membership" ? "show active" : ""
                     }`}
@@ -117,7 +117,7 @@ const SmartDashboardComponent = () => {
                     role="tabpanel"
                   >
                    <MembershipFormComponent/>
-                  </div>  */}
+                  </div>  
 
                    <div
                     className={`tab-pane fade shadow rounded   dashboard-tab ${

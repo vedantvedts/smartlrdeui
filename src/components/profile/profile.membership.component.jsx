@@ -7,6 +7,8 @@ import { format } from "date-fns";
 import { Country, State, City } from "country-state-city";
 import { getUserDetails } from 'services/auth.service';
 
+
+
 const personalInfoValidationSchema = Yup.object({
   organization: Yup.string().required("Organization is required"),
   dateOfBirth: Yup.date().required("Date of Birth is required"),
@@ -195,7 +197,6 @@ const ProfileFormComponent = () => {
     const fetchData = async () => {
       try {
         const { empName, emailId, phone } = await getUserDetails();
-        console.log('zssssssssssssssss'+empName, emailId, phone);
         setInitialValues((prevValues) => ({
           ...prevValues, // Preserve existing structure
           name: empName || "",
@@ -234,7 +235,6 @@ const ProfileFormComponent = () => {
  initialValues={initialValues}
  enableReinitialize={true}
   validationSchema={personalInfoValidationSchema}
-  onSubmit={(values) => console.log("Personal Info Submitted:", values)}
   validateOnBlur={true}  
   validateOnChange={true} 
 >
@@ -518,7 +518,6 @@ const ProfileFormComponent = () => {
                employerType: ""
               }}
             validationSchema={professionalInfoValidationSchema}
-            onSubmit={(values) => console.log("Professional Info Submitted:", values)}
             validateOnBlur={true}
             validateOnChange={true}
           >
@@ -628,7 +627,6 @@ const ProfileFormComponent = () => {
                 degreeAwarded: ""
                }}
             validationSchema={educationInfoValidationSchema}
-            onSubmit={(values) => console.log("Educational Info Submitted:", values)}
             validateOnBlur={true}
             validateOnChange={true}
           >

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import HeaderComponent from "components/header/header";
+import {  submitChangePassword } from 'services/auth.service';
 
 const ChangePasswordComponent = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);

@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaPlus, FaMinus, FaEdit } from "react-icons/fa";
 import { MdAddCard } from "react-icons/md";
-import './membershipFee.css'
+import './membershipFee.css';
 
 const SubscriptionMasterComponent = () => {
   const [memberships, setMemberships] = useState([
@@ -113,7 +113,6 @@ const SubscriptionMasterComponent = () => {
           })}
           onSubmit={(values) => {
             setMemberships(values.memberships);
-            console.log("Updated Memberships:", values.memberships);
           }}
         >
           {({ values, touched, errors, handleChange, handleSubmit }) => (

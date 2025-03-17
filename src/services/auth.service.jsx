@@ -62,7 +62,6 @@ export const logout = async (logoutType) => {
     throw new Error('No user found');
   }
 
-  console.log("🔥 Username from localStorage:", username);
 
   try {
     const response = await axios.post(
@@ -71,7 +70,6 @@ export const logout = async (logoutType) => {
       { headers: { 'Content-Type': 'application/json', ...authHeader() } }
     );
 
-    console.log("🔥 Response received:", response.data);
     const userDetails = response.data;
 
     // Assuming userDetails is an array with a single object
@@ -88,11 +86,33 @@ export const logout = async (logoutType) => {
     return { empName, emailId, phone }; // Return structured object
 
   } catch (error) {
-    console.error('🔥 Error occurred in getUserDetails:', error);
+    console.error(' Error occurred in getUserDetails:', error);
     throw error;
   }
 };
 
+
+
+
+
+
+export const submitChangePassword = async (oldPassword, newPassword, email) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}change-password-submit`,
+      { oldPasswordValue: oldPassword ,
+        newPasswordValue: newPassword ,
+        email : email
+
+      },
+      // { headers: authHeader() }}//authHeader or token is not required as change-password is available before login if otp is verified also
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error occurred in submitChangePassword:', error);
+    throw error;
+  }
+};
 
 
   // Function for custom audit stamping logout
@@ -114,3 +134,4 @@ export const logout = async (logoutType) => {
 //     }
 //   };
   
+

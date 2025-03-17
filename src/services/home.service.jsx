@@ -28,4 +28,25 @@ export const submitRegisterAdd = async (userDto) => {
       throw error;
     }
   };
+
+  // Function to handle forgot password otpgeneration
+export const sendOtp = async (emailId) => {
+  try {
+   
+    const formData = new FormData();
+    formData.append("email", emailId.trim());
+
+    const response = await axios.post(`${API_URL}sendOtp`,
+      formData,
+      // { headers: authHeader() }//authHeader or token is not required as forgot-password is open for everyone
+  );
+
+    return response.data;
+  } catch (error) {
+    console.error('Error occurred in sendOtp:', error);
+    throw error;
+  }
+
+
+};
   
