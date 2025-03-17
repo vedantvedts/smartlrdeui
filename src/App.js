@@ -12,6 +12,7 @@ import ForgotPasswordComponent from 'components/home/forgot.password.component';
 import ContactFormComponent from 'components/home/contact.form.component';
 import SmartDashboardComponent from 'components/dashboard/smart.dashboard.component';
 import ChangePasswordComponent from 'components/dashboard/change.password.component'
+import RazorpayCheckout from 'components/payment/RazorpayCheckout';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
         <Route path="/membership" element={<ContactFormComponent />} />
         <Route path="/dashboard" element={<SmartDashboardComponent />} />
         <Route path="/change-password" element={<ChangePasswordComponent />} />
+        <Route path="/payment" element={<RazorpayCheckout />} />
+
+        
 
        
         {/* <Route path="/about" element={<AboutPageComponent />} /> */}
