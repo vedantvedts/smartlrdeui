@@ -62,7 +62,6 @@ export const logout = async (logoutType) => {
     throw new Error('No user found');
   }
 
-  console.log("🔥 Username from localStorage:", username);
 
   try {
     const response = await axios.post(
@@ -71,7 +70,6 @@ export const logout = async (logoutType) => {
       { headers: { 'Content-Type': 'application/json', ...authHeader() } }
     );
 
-    console.log("🔥 Response received:", response.data);
     const userDetails = response.data;
 
     // Assuming userDetails is an array with a single object
@@ -88,10 +86,11 @@ export const logout = async (logoutType) => {
     return { empName, emailId, phone }; // Return structured object
 
   } catch (error) {
-    console.error('🔥 Error occurred in getUserDetails:', error);
+    console.error(' Error occurred in getUserDetails:', error);
     throw error;
   }
 };
+
 
 
 
@@ -114,3 +113,4 @@ export const logout = async (logoutType) => {
 //     }
 //   };
   
+

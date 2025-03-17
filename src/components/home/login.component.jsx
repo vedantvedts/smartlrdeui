@@ -19,17 +19,14 @@ const LoginComponent = (props) => {
   const handleLoginSubmit = async (values) => {
     setMessage("");
     setLoading(true);
+
     await login(values.username, values.password).then(
       (response) => {
-        
         if (!response.token) {
           setLoading(false);
           setMessage("Login failed. Please try again.");
-         // logout("L");
-         
           props.router.navigate("/login");
         } else {
-          
           props.router.navigate("/dashboard");
         }
       },
@@ -47,6 +44,9 @@ const LoginComponent = (props) => {
         }
         setLoading(false);
         setMessage(resMessage);
+
+        // Hide the message after 3 seconds
+        setTimeout(() => setMessage(""), 2000);
       }
     );
   };
@@ -70,6 +70,13 @@ const LoginComponent = (props) => {
               <div className="card text-black shadow-lg form-card-login">
                 <div className="card-body p-md-5">
                   <p className="text-center h2 fw-bold mb-2 pb-4 form-name">Login</p>
+
+                  {/* Error Message Box */}
+          {message && (
+            <div className="alert alert-danger error-box">{message}</div>
+          )}
+
+
                   <Formik
                     initialValues={{ username: "", password: "" }}
                     validationSchema={validationSchema}

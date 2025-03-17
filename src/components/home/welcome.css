@@ -217,7 +217,7 @@
   
   /*** Footer ***/
   .footer {
-    background: linear-gradient(45deg,#1a3974, #145f81fd), url('') center center no-repeat;
+    background: linear-gradient(45deg,#1a3974, #145f81fd) no-repeat;
     color: #ecf0f1; 
     padding-top: 50px; 
     padding-bottom: 30px;
