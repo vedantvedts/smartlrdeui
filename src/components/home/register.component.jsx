@@ -64,13 +64,7 @@ const [snackbarSeverity, setSnackbarSeverity] = useState("success");
     setDialogValues(values);
   };
 
-  // const handleDialogConfirm = async () => {
-  //   setOpenConfirmationDialog(false);
-  //   if (isSubmitting) {
-  //     await submitRegisterForm(dialogValues); 
-  //     setIsSubmitting(false); 
-  //   }
-  // };
+
   const handleDialogConfirm = async () => {
     setOpenConfirmationDialog(false);
     if (isSubmitting) {

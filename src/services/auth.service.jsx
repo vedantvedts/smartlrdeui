@@ -94,27 +94,6 @@ export const logout = async (logoutType) => {
 
 
 
-
-
-export const submitChangePassword = async (oldPassword, newPassword, email) => {
-  try {
-    const response = await axios.post(
-      `${API_URL}change-password-submit`,
-      { oldPasswordValue: oldPassword ,
-        newPasswordValue: newPassword ,
-        email : email
-
-      },
-      // { headers: authHeader() }}//authHeader or token is not required as change-password is available before login if otp is verified also
-    );
-    return response.data;
-  } catch (error) {
-    console.error('Error occurred in submitChangePassword:', error);
-    throw error;
-  }
-};
-
-
   // Function for custom audit stamping logout
 // export const customAuditStampingLogout = async (username, logoutType) => {
 //     if (!username) {
