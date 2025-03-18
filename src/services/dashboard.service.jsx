@@ -14,8 +14,7 @@ const API_URL = config.API_URL;
       const response = await axios.put(
         `${API_URL}change-password-submit`,
         {
-          newPasswordValue: newPassword,
-          emailValue: newPassword
+          newPasswordValue: newPassword
         },
         { headers: authHeader() }
       );

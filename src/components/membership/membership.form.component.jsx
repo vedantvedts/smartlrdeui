@@ -17,7 +17,6 @@ const MembershipFormComponent = () => {
     }
     const membershipHtml = membershipRef.current.innerHTML;
     const pdfContent = htmlToPdfmake(membershipHtml);
-    console.log('inside handlePrintPdf');
 
     const docDefinition = {
       info: {
@@ -29,9 +28,7 @@ const MembershipFormComponent = () => {
       content: pdfContent,
     };
 
-    console.log('docDefinition completed loading');
     pdfMake.createPdf(docDefinition).download("Membership_Card.pdf");
-    console.log('pdf successfully downloaded');
   };
 
   return (
