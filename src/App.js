@@ -29,6 +29,7 @@ function App() {
         <Route path="/membership" element={<ContactFormComponent />} />
         <Route path="/dashboard" element={<SmartDashboardComponent />} />
         <Route path="/change-password" element={<ChangePasswordComponent />} />
+        <Route path="/reset-password" element={<ChangePasswordComponent />} />
         <Route path="/payment" element={<RazorpayCheckout />} />
 
         

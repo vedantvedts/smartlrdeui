@@ -94,6 +94,7 @@ export const logout = async (logoutType) => {
 
 
 
+
   // Function for custom audit stamping logout
 // export const customAuditStampingLogout = async (username, logoutType) => {
 //     if (!username) {
